@@ -7,7 +7,7 @@ class DailyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(),
+      body: Center(child: Text("hello "),),
     );
   }
 }
