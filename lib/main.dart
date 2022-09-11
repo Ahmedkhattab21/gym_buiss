@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GYM',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Color.fromRGBO(22, 178, 66, 1),
         colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Color.fromRGBO(238, 238, 238, .45)),
