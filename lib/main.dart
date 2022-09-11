@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym2/view/Daily.dart';
 import 'package:gym2/view/Home.dart';
 
 void main() {
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/':(ctx)=>MyHomePage(),
+        DailyPage.routeName:(ctx)=>DailyPage(),
 
       },
     );

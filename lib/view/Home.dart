@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:gym2/view/Daily.dart';
 
 class MyHomePage extends StatelessWidget {
   @override
@@ -24,7 +25,7 @@ class MyHomePage extends StatelessWidget {
                   ),),
                   InkWell(
                     onTap: (){
-                      print("${md.height}");
+                      Navigator.of(context).pushReplacementNamed(DailyPage.routeName);
                     },
                     child: Container(
                       margin: EdgeInsets.only(bottom: 60),
