@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gym2/view/Daily.dart';
-import 'package:gym2/view/Home.dart';
+import 'package:gym2/view/screens/Daily.dart';
+import 'package:gym2/view/screens/Home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'GYM',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color.fromRGBO(22, 178, 66, 1),
-        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Color.fromRGBO(238, 238, 238, .45)),
+        primaryColor: const Color.fromRGBO(22, 178, 66, 1),
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary:const  Color.fromRGBO(238, 238, 238, .45)),
         textTheme: const TextTheme(
           headline1: TextStyle(
             fontSize: 32,

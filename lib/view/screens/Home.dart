@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:gym2/view/Daily.dart';
+import 'package:gym2/view/screens/Daily.dart';
 
 class MyHomePage extends StatelessWidget {
   @override
