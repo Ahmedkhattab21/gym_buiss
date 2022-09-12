@@ -4,6 +4,9 @@ import 'package:gym2/view/screens/Attendance.dart';
 import 'package:gym2/view/screens/LoseWeight.dart';
 import 'package:gym2/view/screens/OverWeight.dart';
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+
 import 'NewPerson.dart';
 class DailyPage extends StatefulWidget {
   static const String routeName="/Daily";
@@ -56,11 +59,11 @@ class _DailyPageState extends State<DailyPage> {
 
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month_outlined,),
+              icon: Icon(FontAwesomeIcons.glassWater),
               label: "lose",
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month_outlined),
+              icon: Icon(FontAwesomeIcons.dumbbell),
             label: "Over"
           )
         ],
