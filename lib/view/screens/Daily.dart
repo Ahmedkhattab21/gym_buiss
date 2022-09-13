@@ -14,6 +14,8 @@ class DailyPage extends StatefulWidget {
   State<DailyPage> createState() => _DailyPageState();
 }
 class _DailyPageState extends State<DailyPage> {
+
+
   int currIndex = 0;
   List<Widget> screens=const[
     Attendance(),
@@ -21,10 +23,53 @@ class _DailyPageState extends State<DailyPage> {
     LoseWeight(),
     OverWeight()
   ];
+
   @override
   Widget build(BuildContext context) {
+    List<AppBar> Appsbar=[
+      AppBar(
+      backgroundColor: Colors.white,
+      elevation: 0,
+      title: Text("Attendance",style: Theme.of(context).textTheme.headline2,),
+      actions: const [
+        CircleAvatar(
+          backgroundImage:AssetImage("assets/images/img1.jpg"),),
+        SizedBox(width: 20,),
+      ],
+    ),
+      AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text("New Person",style: Theme.of(context).textTheme.headline2,),
+        actions: const [
+          CircleAvatar(
+            backgroundImage:AssetImage("assets/images/img1.jpg"),),
+          SizedBox(width: 20,),
+        ],
+      ),
+      AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        actions: const [
+          CircleAvatar(
+            backgroundImage:AssetImage("assets/images/img1.jpg"),),
+          SizedBox(width: 20,),
+        ],
+      ),
+      AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        actions: const [
+          CircleAvatar(
+            backgroundImage:AssetImage("assets/images/img1.jpg"),),
+          SizedBox(width: 20,),
+        ],
+      )
+    ];
+
+
     return Scaffold(
-      appBar: AppBar(),
+      appBar: Appsbar[currIndex],
       body:screens[currIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

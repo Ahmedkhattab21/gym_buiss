@@ -29,7 +29,7 @@ class MyHomePage extends StatelessWidget {
                         Navigator.of(context).pushReplacementNamed(DailyPage.routeName);
                       },
                       child: Container(
-                        margin: EdgeInsets.only(bottom: 60),
+                        margin: const EdgeInsets.only(bottom: 60),
                         alignment: Alignment.center,
                         width: md.width * .46962616,
                         height:md.height * .08,
