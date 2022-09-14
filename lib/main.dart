@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:gym2/controller/provider/AttendanceProvider.dart';
+import 'package:gym2/controller/provider/NewPersonProvider.dart';
 import 'package:gym2/view/screens/Daily.dart';
 import 'package:gym2/view/screens/Home.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+runApp(
+  MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_)=>AttendanceProvider()),
+      ChangeNotifierProvider(create: (_)=>NewPersonProvider()),
+
+    ],
+    child: const MyApp(),),
+);
 }
 
 

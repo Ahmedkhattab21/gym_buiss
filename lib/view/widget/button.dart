@@ -13,6 +13,7 @@ class Button extends StatelessWidget {
     return InkWell(
       onTap: fun,
       child: Container(
+        margin: EdgeInsets.only(top: 14),
         alignment: Alignment.center,
         width: wid,
         height: hei,
