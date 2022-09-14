@@ -17,7 +17,7 @@ class _DailyPageState extends State<DailyPage> {
 
 
   int currIndex = 0;
-  List<Widget> screens=const[
+  List<Widget> screens=[
     Attendance(),
     NewPerson(),
     LoseWeight(),
@@ -50,6 +50,7 @@ class _DailyPageState extends State<DailyPage> {
       AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
+        title: Text("Lossing Weight ",style: Theme.of(context).textTheme.headline2,),
         actions: const [
           CircleAvatar(
             backgroundImage:AssetImage("assets/images/img1.jpg"),),
@@ -59,6 +60,7 @@ class _DailyPageState extends State<DailyPage> {
       AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
+        title: Text("Over Weight",style: Theme.of(context).textTheme.headline2,),
         actions: const [
           CircleAvatar(
             backgroundImage:AssetImage("assets/images/img1.jpg"),),
