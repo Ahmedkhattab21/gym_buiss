@@ -17,7 +17,7 @@ class DBHelper{
               'CREATE TABLE $_tabeName ('
                   'id INTEGER PRIMARY KEY AUTOINCREMENT,'
                   ' name TEXT, date TEXT, height DOUBLE,'
-                  'weight DOUBLE, age DOUBLE, days INTEGER , type INTEGER)'
+                  'weight DOUBLE, age DOUBLE, payed INTEGER, days INTEGER , type INTEGER)'
           );
         });
       }catch(e){

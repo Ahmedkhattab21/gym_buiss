@@ -1,79 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:gym2/view/screens/Attendance.dart';
-import 'package:gym2/view/screens/LoseWeight.dart';
-import 'package:gym2/view/screens/NewPerson.dart';
-import 'package:gym2/view/screens/OverWeight.dart';
 import 'package:provider/provider.dart';
-
 import '../../controller/provider/NewPersonProvider.dart';
 import '../widget/button.dart';
 import '../widget/search.dart';
 
-//
-// class searchScreen extends StatelessWidget {
-//      static const String routeName="/search";
-//
-//   const searchScreen({Key? key}) : super(key: key);
-//
-//
-//
-//   List<Widget> _buildCells(int count) {
-//     return List.generate(
-//       count,
-//           (index) => Container(
-//         alignment: Alignment.center,
-//         width: 120.0,
-//         height: 60.0,
-//         color: Colors.white,
-//         margin: EdgeInsets.all(4.0),
-//         child: Text("${index + 1}"),
-//     ));
-//   }
-//
-//   List<Widget> _buildRows(int count) {
-//     return List.generate(
-//       count,
-//           (index) => Row(
-//         children: _buildCells(10),
-//       ),
-//     );
-//   }
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(),
-//       body: SingleChildScrollView(
-//         child: Row(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: <Widget>[
-//             Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: _buildCells(20),
-//             ),
-//             Flexible(
-//               child: SingleChildScrollView(
-//                 scrollDirection: Axis.horizontal,
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: _buildRows(20),
-//                 ),
-//               ),
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-//
-
 class searchScreen extends StatelessWidget {
   static const String routeName="/search";
-
   searchScreen({Key? key}) : super(key: key);
-
 
   List<String> Datesss=[
     "2/9/2022",
@@ -147,13 +81,14 @@ class searchScreen extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        _buildcell("Name",170),
+                        _buildcell("Name",200),
                         _buildcell("Start Date",140),
                         _buildcell("Hieght",90),
                         _buildcell("Weight",90),
                         _buildcell("Age",90),
                         _buildcell(" Days",90),
                         _buildcell("Attendance",150),
+                        _buildcell("payed",130),
                         _buildcell("Type",150),
                         _buildcell("Dates",(170 * Datesss.length) +0.0),
                         
@@ -162,12 +97,13 @@ class searchScreen extends StatelessWidget {
                     Row(
                       children: [
                         Container(
+                          padding: EdgeInsets.all(7),
                           decoration: BoxDecoration(
                             border:Border.all(width: 0),
                             color: Colors.white,
                           ),
                           alignment: Alignment.center,
-                          width: 170,
+                          width: 200,
                           height: 60.0,
                           child: Text("احمد محمد شعبان محمد حسين  خطاب",
                             overflow:TextOverflow.ellipsis,
@@ -181,6 +117,7 @@ class searchScreen extends StatelessWidget {
                         _buildcell2("20", 90),
                         _buildcell2("4", 90),
                         _buildcell2("14", 150),
+                        _buildcell2("Not payed", 130),
                         _buildcell2("OverWeight", 150),
                         ...Datesss.map((e) => Container(
                           decoration: BoxDecoration(

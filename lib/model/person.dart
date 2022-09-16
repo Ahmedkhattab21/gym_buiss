@@ -12,6 +12,7 @@ class Person {
   double height;
   double weight;
   double age;
+  int payed;
   int days;
   int type;
   Person({
@@ -21,6 +22,7 @@ class Person {
     required this.height,
     required this.weight,
     required this.age,
+    required this.payed,
     required this.days,
     required this.type,
   });
@@ -32,6 +34,7 @@ class Person {
     height: json["height"].toDouble(),
     weight: json["weight"].toDouble(),
     age: json["age"].toDouble(),
+    payed: json["payed"],
     days: json["days"],
     type: json["type"],
   );
@@ -43,6 +46,7 @@ class Person {
     "height": height,
     "weight": weight,
     "age": age,
+    "payed":payed,
     "days": days,
     "type": type,
   };

@@ -5,6 +5,7 @@ import 'package:gym2/view/screens/LoseWeight.dart';
 import 'package:gym2/view/screens/OverWeight.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 
 import 'NewPerson.dart';
@@ -16,7 +17,7 @@ class DailyPage extends StatefulWidget {
 class _DailyPageState extends State<DailyPage> {
 
 
-  int currIndex = 0;
+  int currIndex=0 ;
   List<Widget> screens=[
     Attendance(),
     NewPerson(),
@@ -68,12 +69,10 @@ class _DailyPageState extends State<DailyPage> {
         ],
       )
     ];
-
-
     return Scaffold(
       appBar: Appsbar[currIndex],
       body:screens[currIndex],
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar:BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor:const Color.fromRGBO(217, 217, 217, .5),
         elevation: 0,
@@ -106,12 +105,12 @@ class _DailyPageState extends State<DailyPage> {
 
           ),
           BottomNavigationBarItem(
-              icon: Icon(FontAwesomeIcons.glassWater),
-              label: "lose",
+            icon: Icon(FontAwesomeIcons.glassWater),
+            label: "lose",
           ),
           BottomNavigationBarItem(
               icon: Icon(FontAwesomeIcons.dumbbell),
-            label: "Over"
+              label: "Over"
           )
         ],
       ),

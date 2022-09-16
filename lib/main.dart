@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym2/controller/provider/AttendanceProvider.dart';
 import 'package:gym2/controller/provider/NewPersonProvider.dart';
+import 'package:gym2/view/screens/AddPerson.dart';
 import 'package:gym2/view/screens/Daily.dart';
 import 'package:gym2/view/screens/Home.dart';
 import 'package:gym2/view/screens/searchScreen.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         '/':(ctx)=>MyHomePage(),
         DailyPage.routeName:(ctx)=>DailyPage(),
         searchScreen.routeName:(ctx)=>searchScreen(),
+        AddPerson.routeName:(ctx)=>AddPerson(),
 
       },
     );

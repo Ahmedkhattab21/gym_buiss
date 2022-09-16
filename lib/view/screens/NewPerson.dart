@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gym2/view/screens/searchScreen.dart';
 import '../widget/button.dart';
+import 'AddPerson.dart';
 
 
 class NewPerson extends StatelessWidget {
@@ -16,7 +17,7 @@ class NewPerson extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-      InkWell(
+          InkWell(
         onTap: (){
           Navigator.of(context).pushNamed(searchScreen.routeName);
         },
@@ -38,7 +39,9 @@ class NewPerson extends StatelessWidget {
         ),
         ),
       ),
-          Button(fun: (){}
+          Button(fun: (){
+            Navigator.of(context).pushNamed(AddPerson.routeName);
+          }
             , wid: 190, hei: 190, cir: 30, color:const Color.fromRGBO(22, 178, 66, 1), text:"+"),
         ],
       ),
