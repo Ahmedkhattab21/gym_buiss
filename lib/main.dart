@@ -3,7 +3,9 @@ import 'package:gym2/controller/provider/AttendanceProvider.dart';
 import 'package:gym2/controller/provider/NewPersonProvider.dart';
 import 'package:gym2/view/screens/Daily.dart';
 import 'package:gym2/view/screens/Home.dart';
+import 'package:gym2/view/screens/searchScreen.dart';
 import 'package:provider/provider.dart';
+
 
 void main() {
 runApp(
@@ -51,6 +53,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/':(ctx)=>MyHomePage(),
         DailyPage.routeName:(ctx)=>DailyPage(),
+        searchScreen.routeName:(ctx)=>searchScreen(),
 
       },
     );
