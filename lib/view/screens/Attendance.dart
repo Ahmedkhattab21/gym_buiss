@@ -17,10 +17,29 @@ class Attendance extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Input(txt: "Daily Attendance",controller: Provider.of<AttendanceProvider>(context,listen: false).controller,widget: const SizedBox(width: 30,),),
-            Button(fun: (){
-              Provider.of<AttendanceProvider>(context,listen: false).addAttendanceToDatabase();}
-            , wid: 350, hei: 100, cir: 20, color: const Color.fromRGBO(22, 178, 66, 1), text:"Add"),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 60,top: 20,right: 20),
+              child: Input(txt: "Daily Attendance",controller: Provider.of<AttendanceProvider>(context,listen: false).controller,widget: const SizedBox(width: 30,),),
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Expanded(
+                    child: Button(fun: (){
+                      Provider.of<AttendanceProvider>(context,listen: false).addAttendanceToDatabase();
+                      }
+                    , wid: 177, hei: 99, cir: 20, color: const Color.fromRGBO(22, 178, 66, 1), text:"Add"),
+                  ),
+                 const SizedBox(width: 15,),
+                  Expanded(
+                    child: Button(fun: (){}
+                        , wid: 177, hei: 99, cir: 20, color: const Color.fromRGBO(22, 178, 66, 1), text:"Pay"),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

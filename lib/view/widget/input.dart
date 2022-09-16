@@ -8,15 +8,16 @@ class Input extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 30,top: 30),
-      padding: const EdgeInsets.only(left: 15,bottom: 15),
+      padding: const EdgeInsets.only(left: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
            Text(txt,style: Theme.of(context).textTheme.headline2,),
           Container(
+            padding:const EdgeInsets.only(top: 5,bottom: 5),
               margin: const EdgeInsets.only(left: 15,top: 5,right: 5),
               decoration: BoxDecoration(
+                color: const Color.fromRGBO(238, 238, 238, 1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
@@ -40,7 +41,7 @@ class Input extends StatelessWidget {
                       ),
                     ),
                   ),
-                  widget??Container(),
+                 widget??Container(),
                 ],
               ),
           ),

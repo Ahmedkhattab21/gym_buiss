@@ -6,6 +6,9 @@ class AttendanceProvider extends ChangeNotifier{
   TextEditingController controller=TextEditingController();
 
   addAttendanceToDatabase(){
+   print("hello");
 
+  notifyListeners();
+  controller.clear();
   }
 }

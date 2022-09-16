@@ -8,4 +8,5 @@ class NewPersonProvider extends ChangeNotifier{
   addNewPersonToDatabase(){
 
   }
+
 }
