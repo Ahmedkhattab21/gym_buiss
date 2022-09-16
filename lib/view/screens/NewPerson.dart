@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gym2/view/screens/searchScreen.dart';
 import '../widget/button.dart';
 
 
@@ -16,7 +17,9 @@ class NewPerson extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
       InkWell(
-        onTap: (){},
+        onTap: (){
+          Navigator.of(context).pushNamed(searchScreen.routeName);
+        },
         child: Container(
           width: 360,
           height: 70,
@@ -35,7 +38,6 @@ class NewPerson extends StatelessWidget {
         ),
         ),
       ),
-          // search(controller: Provider.of<NewPersonProvider>(context,listen: false).controller,),
           Button(fun: (){}
             , wid: 190, hei: 190, cir: 30, color:const Color.fromRGBO(22, 178, 66, 1), text:"+"),
         ],
