@@ -19,7 +19,7 @@ class Attendance extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 60,top: 20,right: 20),
-              child: Input(txt: "Daily Attendance",controller: Provider.of<AttendanceProvider>(context,listen: false).controller,widget: const SizedBox(width: 30,),),
+              child: Input(txt: "Daily Attendance",hintTxt: "Enter your Number",controller: Provider.of<AttendanceProvider>(context,listen: false).controller,),
             ),
             Padding(
               padding: EdgeInsets.all(20),
@@ -30,12 +30,12 @@ class Attendance extends StatelessWidget {
                     child: Button(fun: (){
                       Provider.of<AttendanceProvider>(context,listen: false).addAttendanceToDatabase();
                       }
-                    , wid: 177, hei: 99, cir: 20, color: const Color.fromRGBO(22, 178, 66, 1), text:"Add"),
+                    , wid: 177, hei: 89, cir: 20, color: const Color.fromRGBO(22, 178, 66, 1), text:"Add"),
                   ),
-                 const SizedBox(width: 15,),
+                 const SizedBox(width: 35,),
                   Expanded(
                     child: Button(fun: (){}
-                        , wid: 177, hei: 99, cir: 20, color: const Color.fromRGBO(22, 178, 66, 1), text:"Pay"),
+                        , wid: 177, hei: 89, cir: 20, color: const Color.fromRGBO(22, 178, 66, 1), text:"Pay"),
                   ),
                 ],
               ),
