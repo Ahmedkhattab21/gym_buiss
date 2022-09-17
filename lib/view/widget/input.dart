@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class Input extends StatelessWidget {
   String txt;
+  String hintTxt;
   TextEditingController? controller;
   Widget? widget;
- Input({required this.txt,this.controller,this.widget});
+ Input({required this.txt,required this.hintTxt,this.controller,this.widget});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,10 +25,13 @@ class Input extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextFormField(
+                      readOnly: widget !=null ? true:false,
                       cursorColor: Colors.black45,
                       style: Theme.of(context).textTheme.headline1,
                       controller: controller,
                       decoration: InputDecoration(
+                        hintText: hintTxt,
+                        hintStyle: Theme.of(context).textTheme.headline2!.copyWith(color:Colors.grey ),
                         fillColor:const  Color.fromRGBO(238, 238, 238, 1),
                         filled: true,
                         enabledBorder: UnderlineInputBorder(
