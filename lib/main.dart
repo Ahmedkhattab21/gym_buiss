@@ -1,19 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:gym2/controller/provider/AttendanceProvider.dart';
-import 'package:gym2/controller/provider/NewPersonProvider.dart';
+import 'package:gym2/provider/AttendanceProvider.dart';
+import 'package:gym2/provider/LoseWeightProvider.dart';
+import 'package:gym2/provider/NewPersonProvider.dart';
+import 'package:gym2/provider/OverWeightProvider.dart';
+import 'package:gym2/provider/searchProvider.dart';
 import 'package:gym2/view/screens/AddPerson.dart';
 import 'package:gym2/view/screens/Daily.dart';
 import 'package:gym2/view/screens/Home.dart';
 import 'package:gym2/view/screens/searchScreen.dart';
 import 'package:provider/provider.dart';
 
+import 'model/db.dart';
 
-void main() {
+//0>>  تخسيس
+//0 >> payed
+void main()async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await DBHelper.initDb();
 runApp(
   MultiProvider(
     providers: [
+
       ChangeNotifierProvider(create: (_)=>AttendanceProvider()),
       ChangeNotifierProvider(create: (_)=>NewPersonProvider()),
+      ChangeNotifierProvider(create: (_)=>SearchProvider()),
+      ChangeNotifierProvider(create: (_)=>LosingProvider()),
+      ChangeNotifierProvider(create: (_)=>OveringProvider()),
+
 
     ],
     child: const MyApp(),),

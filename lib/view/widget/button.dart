@@ -11,6 +11,7 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      highlightColor:Colors.white,
       onTap: fun,
       child: Container(
         margin: EdgeInsets.only(top: 14),

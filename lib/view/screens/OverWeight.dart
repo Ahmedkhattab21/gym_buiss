@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gym2/provider/OverWeightProvider.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/LoseWeightProvider.dart';
 
 class OverWeight extends StatelessWidget {
    OverWeight({Key? key}) : super(key: key);
@@ -39,44 +43,7 @@ class OverWeight extends StatelessWidget {
         ),
       );
     }
-    List<Widget> idLists=[
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-    ];
-    List<Widget> lists=[
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
-      Row(),
 
-
-    ];
     return  Padding(
       padding: const EdgeInsets.only(top: 15),
       child: SingleChildScrollView(
@@ -89,7 +56,7 @@ class OverWeight extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildcell("id", 60),
-                    ...idLists.map((e) => _buildcell2("6", 60),),
+                    ...Provider.of<OveringProvider>(context,listen: false).pperson.map((e) => _buildcell2(e.id.toString(), 60),),
                   ],
                 ),
 
@@ -115,7 +82,7 @@ class OverWeight extends StatelessWidget {
 
                             ],
                           ),
-                          ...lists.map((e) =>Row(
+                          ...Provider.of<OveringProvider>(context,listen: false).pperson.map((e) =>Row(
                             children: [
                               Container(
                                 padding: EdgeInsets.all(7),
@@ -126,20 +93,20 @@ class OverWeight extends StatelessWidget {
                                 alignment: Alignment.center,
                                 width: 200,
                                 height: 60.0,
-                                child: Text("احمد محمد شعبان محمد حسين  خطاب",
+                                child: Text(e.name.toString(),
                                   overflow:TextOverflow.ellipsis,
                                   textAlign:TextAlign.end
                                   ,style: Theme.of(context).textTheme.headline2,
                                 ),
                               ),
-                              _buildcell2("2/6/5555", 140),
-                              _buildcell2("170", 90),
-                              _buildcell2("70", 90),
-                              _buildcell2("20", 90),
-                              _buildcell2("4", 90),
+                              _buildcell2(e.date.toString(), 140),
+                              _buildcell2(e.height.toString(), 90),
+                              _buildcell2(e.weight.toString(), 90),
+                              _buildcell2(e.age.toString(), 90),
+                              _buildcell2(e.days.toString(), 90),
                               _buildcell2("14", 150),
-                              _buildcell2("Not payed", 130),
-                              _buildcell2("OverWeight", 150),
+                              _buildcell2(e.payed==0?"payed":"Not payed", 130),
+                              _buildcell2("Over", 150),
                               ...Datesss.map((e) => Container(
                                 decoration: BoxDecoration(
                                   border:Border.all(width: 0),

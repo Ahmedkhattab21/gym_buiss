@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gym2/controller/provider/AttendanceProvider.dart';
+import 'package:gym2/provider/AttendanceProvider.dart';
 import 'package:provider/provider.dart';
 
 import '../widget/button.dart';
