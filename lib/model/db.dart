@@ -3,47 +3,77 @@ import 'package:gym2/model/person.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DBHelper{
-  static Database? db;
+  static Database? _database;
   static const int _version=1;
   static const String _tabeName='persons';
+  static const String _tablelName2='attendancePerson';
 
-  Future<void> initDb()async{
-    if(db != null){
+ static Future<void> initDb()async{
+    if(_database != null){
       debugPrint("is created");
     }else{
       try{
+
         String _path=await getDatabasesPath()+'person.db';
-        db=await openDatabase(_path,version: _version,onCreate:(Database db, int version)async{
+        _database=await openDatabase(_path,version: _version,onCreate:(Database db, int version)async{
           await db.execute(
               'CREATE TABLE $_tabeName ('
                   'id INTEGER PRIMARY KEY AUTOINCREMENT,'
-                  ' name TEXT, date TEXT, height DOUBLE,'
-                  'weight DOUBLE, age DOUBLE, payed INTEGER, days INTEGER , type INTEGER)'
+                  'name TEXT ,date TEXT,height REAL,'
+                  'weight REAL ,age REAL ,payed INTEGER ,days INTEGER ,type INTEGER )'
           );
-        });
+          await db.execute(
+              'CREATE TABLE $_tablelName2 ('
+                  'person_id INTEGER,atten_days TEXT ,'
+                  'FOREIGN KEY (person_id) '
+                  'REFERENCES $_tabeName (id) )'
+          );
+        },
+          onOpen: (Database dbb){
+          print("database opened");
+          }
+        );
+        // await deleteDatabase(_path);
       }catch(e){
-        print(e);
+        print("${e}");
       }
+
+
     }
   }
- Future<int> insert(Person person)async{
-   return await db!.insert(_tabeName, person.toJson());
+
+
+
+ static Future<int> insert({required Person? person})async{
+   return await _database!.insert(_tabeName, person!.toJson());
   }
 
-  Future<List<Map<String,dynamic>>> queryItem(int i)async{
-    return await db!.query(_tabeName,where:'id = ?' ,whereArgs:[i] );
+  static Future<List<Map<String,dynamic>>>? queryItem(int i)async{
+    return await _database!.query(_tabeName,where:'id = ?' ,whereArgs:[i] );
   }
 
-  Future<List<Map<String,dynamic>>> query()async{
-   return await db!.query(_tabeName);
+  static Future<List<Map<String,dynamic>>> queryLose()async{
+    return await _database!.query(_tabeName,where: 'type = ?',whereArgs: [0]);
+  }
+  static Future<List<Map<String,dynamic>>> queryOver()async{
+    return await _database!.query(_tabeName,where: 'type = ?',whereArgs: [1]);
   }
 
-  Future<int> update(Person person)async{
-    return await db!.update(_tabeName,person.toJson(), where:'id = ?' ,whereArgs: [person.id]);
+
+  static Future<List<Map<String,dynamic>>>? attendanceDates(int i)async{
+    print("items was called");
+
+    return await _database!.query(_tablelName2,where: 'person_id = ?',whereArgs: [i]);
   }
-  Future<int> delete(Person person)async{
-    return await db!.delete(_tabeName, where:'id = ?' ,whereArgs: [person.id]);
+
+
+  static Future<int> update(Person person)async{
+    return await _database!.update(_tabeName,person.toJson(), where:'id = ?' ,whereArgs: [person.id]);
   }
+  static Future<int> delete(Person person)async{
+    return await _database!.delete(_tabeName, where:'id = ?' ,whereArgs: [person.id]);
+  }
+
 
 
 

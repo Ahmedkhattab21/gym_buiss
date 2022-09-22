@@ -6,17 +6,18 @@ Person welcomeFromJson(String str) => Person.fromJson(json.decode(str));
 String welcomeToJson(Person data) => json.encode(data.toJson());
 
 class Person {
-  int id;
-  String name;
-  String date;
-  double height;
-  double weight;
-  double age;
-  int payed;
-  int days;
-  int type;
+  int?id;
+  String? name;
+  String? date;
+  double? height;
+  double? weight;
+  double? age;
+  int? payed;
+  int? days;
+  int? type;
+  List<String>? atten_days;
   Person({
-    required this.id,
+      this.id,
     required this.name,
     required this.date,
     required this.height,
@@ -25,6 +26,7 @@ class Person {
     required this.payed,
     required this.days,
     required this.type,
+     this.atten_days
   });
 
   factory Person.fromJson(Map<String, dynamic> json) => Person(
@@ -37,6 +39,7 @@ class Person {
     payed: json["payed"],
     days: json["days"],
     type: json["type"],
+    // atten_days: json["atten_days"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -49,5 +52,6 @@ class Person {
     "payed":payed,
     "days": days,
     "type": type,
+    // "atten_days":atten_days,
   };
 }

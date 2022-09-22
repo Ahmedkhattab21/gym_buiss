@@ -8,6 +8,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 
+import '../../provider/LoseWeightProvider.dart';
+import '../../provider/OverWeightProvider.dart';
 import 'NewPerson.dart';
 class DailyPage extends StatefulWidget {
   static const String routeName="/Daily";
@@ -92,6 +94,12 @@ class _DailyPageState extends State<DailyPage> {
         onTap: (int i){
           setState(() {
             currIndex=i;
+            if(i==2){
+              Provider.of<LosingProvider>(context,listen: false).getDataOfLoseWeight();
+            }
+            if(i==3){
+              Provider.of<OveringProvider>(context,listen: false).getDataOfOverWeight();
+            }
           });
         },
         items: const [
