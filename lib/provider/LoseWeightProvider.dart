@@ -6,14 +6,14 @@ import '../model/db.dart';
 import '../model/person.dart';
 
 class LosingProvider extends ChangeNotifier{
-   int long=1;
-  List<Person> pperson=[];
-  List<attendance> Datesss=[];
+   int long=0;
+  List<Person> person=[];
+  List<attendance> dates=[];
  Future<void> getDatesLoseWeight(int id)async{
    try{
      List<Map<String,dynamic>>? dat=await DBHelper.queryDates(id);
-     Datesss.clear();
-     Datesss.addAll(dat.map((date) => attendance.fromJson(date)).toList());
+     dates.clear();
+     dates.addAll(dat.map((date) => attendance.fromJson(date)).toList());
      notifyListeners();
    }catch(e){
      print(e);
@@ -23,18 +23,15 @@ class LosingProvider extends ChangeNotifier{
   Future<void> getDataOfLoseWeight()async{
     try{
       List<Map<String, dynamic>>? per = await DBHelper.queryLose();
-      pperson.clear();
-      pperson.addAll(per.map((data){
-        print(data['name']);
+      person.clear();
+      person.addAll(per.map((data){
          getDatesLoseWeight(data['id']).then((_){
            List<String> mm=[];
-           for(var i in Datesss){
-             longestDates(Datesss.length);
-             print(long);
-             print(i.atten_days);
+           for(var i in dates){
+             longestDates(dates.length);
              mm.add(i.atten_days);
            }
-           for(var ii in pperson){
+           for(var ii in person){
              if(ii.id == data['id']){
                ii.atten_day=mm;
              }
@@ -46,7 +43,8 @@ class LosingProvider extends ChangeNotifier{
       ));
       notifyListeners();
     }catch(e){
-      print(e);}
+       print(e);
+    }
   }
 
   longestDates(int cc){

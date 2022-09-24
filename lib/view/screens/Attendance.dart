@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:gym2/provider/AttendanceProvider.dart';
 import 'package:provider/provider.dart';
 
-import '../../model/db.dart';
 import '../widget/button.dart';
 import '../widget/input.dart';
 
 class Attendance extends StatelessWidget {
 
-   Attendance({Key? key}) : super(key: key);
+   const Attendance({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class Attendance extends StatelessWidget {
               child: Input(txt: "Daily Attendance",hintTxt: "Enter your Number",controller: Provider.of<AttendanceProvider>(context,listen: false).controller,),
             ),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding:const EdgeInsets.all(20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
