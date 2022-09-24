@@ -44,6 +44,7 @@ class DBHelper{
 
 
 
+
  static Future<int> insert({required Person? person})async{
    return await _database!.insert(_tabeName, person!.toJson());
   }
@@ -53,19 +54,40 @@ class DBHelper{
   }
 
   static Future<List<Map<String,dynamic>>> queryLose()async{
+    print("queryLose was called ");
     return await _database!.query(_tabeName,where: 'type = ?',whereArgs: [0]);
   }
   static Future<List<Map<String,dynamic>>> queryOver()async{
+    print("queryOver was called ");
+
     return await _database!.query(_tabeName,where: 'type = ?',whereArgs: [1]);
   }
-
-
-  static Future<List<Map<String,dynamic>>>? attendanceDates(int i)async{
-    print("items was called");
-
-    return await _database!.query(_tablelName2,where: 'person_id = ?',whereArgs: [i]);
+  static Future<List<Map<String,dynamic>>> queryDates(int id)async{
+   print("queryDates was called ");
+    return await _database!.query(_tablelName2,where: 'person_id = ?',whereArgs: [id]);
   }
 
+
+  static Future<int> attendanceDates(attendance A)async{
+    print("attendance was called");
+    return await _database!.insert(_tablelName2 ,A.toJson());
+  }
+  static Future<int?> count()async{
+    print("count was called");
+    int? count = Sqflite.firstIntValue(await _database!.rawQuery('SELECT COUNT(*) FROM $_tabeName'));
+    return count;
+  }
+  static Future<int> updatePayed(int id) async {
+      print("update function called");
+      return await _database!.rawUpdate(
+        '''
+      UPDATE $_tabeName
+      SET payed = ?
+      WHERE id = ?
+      ''',
+        [0, id],
+      );
+    }
 
   static Future<int> update(Person person)async{
     return await _database!.update(_tabeName,person.toJson(), where:'id = ?' ,whereArgs: [person.id]);

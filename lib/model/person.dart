@@ -1,9 +1,9 @@
 
 import 'dart:convert';
 
-Person welcomeFromJson(String str) => Person.fromJson(json.decode(str));
+Person PersonFromJson(String str) => Person.fromJson(json.decode(str));
 
-String welcomeToJson(Person data) => json.encode(data.toJson());
+String PersonToJson(Person data) => json.encode(data.toJson());
 
 class Person {
   int?id;
@@ -15,7 +15,7 @@ class Person {
   int? payed;
   int? days;
   int? type;
-  List<String>? atten_days;
+  List<String> atten_day=[];
   Person({
       this.id,
     required this.name,
@@ -26,7 +26,6 @@ class Person {
     required this.payed,
     required this.days,
     required this.type,
-     this.atten_days
   });
 
   factory Person.fromJson(Map<String, dynamic> json) => Person(
@@ -39,7 +38,6 @@ class Person {
     payed: json["payed"],
     days: json["days"],
     type: json["type"],
-    // atten_days: json["atten_days"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -52,6 +50,30 @@ class Person {
     "payed":payed,
     "days": days,
     "type": type,
-    // "atten_days":atten_days,
+  };
+}
+
+
+attendance attendanceFromJson(String str) => attendance.fromJson(json.decode(str));
+
+String attendanceToJson(attendance data) => json.encode(data.toJson());
+
+class attendance{
+  int person_id;
+  String atten_days;
+
+  attendance({
+    required this.person_id,
+    required this.atten_days,
+});
+
+  factory attendance.fromJson(Map<String, dynamic> json) => attendance(
+    person_id: json["person_id"],
+    atten_days: json["atten_days"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "person_id": person_id,
+    "atten_days": atten_days,
   };
 }
