@@ -1,20 +1,16 @@
+
 import 'package:flutter/material.dart';
 import 'package:gym2/provider/OverWeightProvider.dart';
 import 'package:provider/provider.dart';
 
-import '../../provider/LoseWeightProvider.dart';
 
 class OverWeight extends StatelessWidget {
-   OverWeight({Key? key}) : super(key: key);
-  List<String> Datesss=[
-    "2/9/2022",
-    "3/9/2022",
-    "4/9/2022"
-  ];
+  const OverWeight({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
 
-    Widget _buildcell(String txt ,double wid){
+    Widget _buildCell(String txt ,double wid){
       return Container(
         padding:const EdgeInsets.all(5),
         decoration: BoxDecoration(
@@ -29,7 +25,7 @@ class OverWeight extends StatelessWidget {
         ),
       );
     }
-    Widget _buildcell2(String txt ,double wid){
+    Widget _buildCell2(String txt ,double wid){
       return Container(
         decoration: BoxDecoration(
           border:Border.all(width: 0),
@@ -55,8 +51,8 @@ class OverWeight extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildcell("id", 60),
-                    ...Provider.of<OveringProvider>(context,listen: false).pperson.map((e) => _buildcell2(e.id.toString(), 60),),
+                    _buildCell("id", 60),
+                    ...Provider.of<OveringProvider>(context,listen: false).person.map((e) => _buildCell2(e.id.toString(), 60),),
                   ],
                 ),
 
@@ -69,23 +65,23 @@ class OverWeight extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              _buildcell("Name",200),
-                              _buildcell("Start Date",140),
-                              _buildcell("Hieght",90),
-                              _buildcell("Weight",90),
-                              _buildcell("Age",90),
-                              _buildcell(" Days",90),
-                              _buildcell("Attendance",150),
-                              _buildcell("payed",130),
-                              _buildcell("Type",150),
-                              _buildcell("Dates",(170 * Datesss.length) +0.0),
+                              _buildCell("Name",200),
+                              _buildCell("Start Date",140),
+                              _buildCell("Height",90),
+                              _buildCell("Weight",90),
+                              _buildCell("Age",90),
+                              _buildCell(" Days",90),
+                              _buildCell("Attendance",150),
+                              _buildCell("payed",130),
+                              _buildCell("Type",170),
+                              _buildCell("Dates",(170 * Provider.of<OveringProvider>(context,listen: true).long) +0.0),
 
                             ],
                           ),
-                          ...Provider.of<OveringProvider>(context,listen: false).pperson.map((e) =>Row(
+                          ...Provider.of<OveringProvider>(context,listen: false).person.map((e) =>Row(
                             children: [
                               Container(
-                                padding: EdgeInsets.all(7),
+                                padding: const EdgeInsets.all(7),
                                 decoration: BoxDecoration(
                                   border:Border.all(width: 0),
                                   color: Colors.white,
@@ -99,15 +95,15 @@ class OverWeight extends StatelessWidget {
                                   ,style: Theme.of(context).textTheme.headline2,
                                 ),
                               ),
-                              _buildcell2(e.date.toString(), 140),
-                              _buildcell2(e.height.toString(), 90),
-                              _buildcell2(e.weight.toString(), 90),
-                              _buildcell2(e.age.toString(), 90),
-                              _buildcell2(e.days.toString(), 90),
-                              _buildcell2("14", 150),
-                              _buildcell2(e.payed==0?"payed":"Not payed", 130),
-                              _buildcell2("Over", 150),
-                              ...Datesss.map((e) => Container(
+                              _buildCell2(e.date.toString(), 140),
+                              _buildCell2(e.height.toString(), 90),
+                              _buildCell2(e.weight.toString(), 90),
+                              _buildCell2(e.age.toString(), 90),
+                              _buildCell2(e.days.toString(), 90),
+                              _buildCell2("14", 150),
+                              _buildCell2(e.payed==0?"payed":"Not payed", 130),
+                              _buildCell2("Over Weight", 170),
+                              ...(e.atten_day).map((ee) => Container(
                                 decoration: BoxDecoration(
                                   border:Border.all(width: 0),
                                   color: Colors.white,
@@ -115,7 +111,7 @@ class OverWeight extends StatelessWidget {
                                 alignment: Alignment.center,
                                 width: 170,
                                 height: 60.0,
-                                child: FittedBox(child: Text("${e}",style: Theme.of(context).textTheme.headline2,
+                                child: FittedBox(child: Text(ee,style: Theme.of(context).textTheme.headline2,
                                 ),
                                 ),
                               ) ),

@@ -7,14 +7,14 @@ class Button extends StatelessWidget {
   double cir;
   Color color;
   String text;
-  Button({required this.fun,required this.wid,required this.hei,required this.cir,required this.color,required this.text});
+   Button({required this.fun,required this.wid,required this.hei,required this.cir,required this.color,required this.text});
   @override
   Widget build(BuildContext context) {
     return InkWell(
       highlightColor:Colors.white,
       onTap: fun,
       child: Container(
-        margin: EdgeInsets.only(top: 14),
+        margin:const EdgeInsets.only(top: 14),
         alignment: Alignment.center,
         width: wid,
         height: hei,

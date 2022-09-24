@@ -17,28 +17,28 @@ class AttendanceProvider extends ChangeNotifier{
             SnackBar(
               content: Text("Attendance was Added ",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
-              duration: Duration(seconds: 2),
+              duration:const Duration(seconds: 2),
             ));
       }else if(controller.text.isEmpty){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("Number must be Added",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
             ));
       }else if(getDouble(controller) == -1){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("Enter the number of the person",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
-              duration: Duration(seconds: 2),
+              duration:const Duration(seconds: 2),
             ));
       }else if( getDouble(controller) >= await count() || await count() ==-1){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("Enter the correct number",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
-              duration: Duration(seconds: 2),
+              duration:const Duration(seconds: 2),
             ));
       }
       notifyListeners();
@@ -49,7 +49,6 @@ class AttendanceProvider extends ChangeNotifier{
   addAttendanceToDatabase()async{
     try{
       int value = await DBHelper.attendanceDates(attendance(person_id:int.parse(controller.text), atten_days: DateFormat.yMd().format(DateTime.now()).toString()));
-      print("$value");
       notifyListeners();
     }catch(e){
       print(e);
@@ -73,21 +72,21 @@ class AttendanceProvider extends ChangeNotifier{
             SnackBar(
               content: Text("Person was Payed",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
-              duration: Duration(seconds: 2),
+              duration:const Duration(seconds: 2),
             ));
       }else if(controller.text.isEmpty){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("Number must be Added",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
-              duration: Duration(seconds: 2),
+              duration:const Duration(seconds: 2),
             ));
       }else if(await payed(int.parse(controller.text)) == -1){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("Enter the number of the person",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
-              duration: Duration(seconds: 2),
+              duration:const Duration(seconds: 2),
             ));
       }
       notifyListeners();
@@ -105,7 +104,7 @@ class AttendanceProvider extends ChangeNotifier{
   }
 
   double getDouble(TextEditingController){
-    double? number1=double.tryParse(TextEditingController.text as String)??null;
+    double? number1= double.tryParse(TextEditingController.text as String)??null;
     if(number1 != null && number1 != 0){
       return number1;
     }else{

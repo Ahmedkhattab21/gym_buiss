@@ -14,7 +14,7 @@ class DBHelper{
     }else{
       try{
 
-        String _path=await getDatabasesPath()+'person.db';
+        String  _path = await getDatabasesPath()+'person.db';
         _database=await openDatabase(_path,version: _version,onCreate:(Database db, int version)async{
           await db.execute(
               'CREATE TABLE $_tabeName ('
@@ -29,13 +29,11 @@ class DBHelper{
                   'REFERENCES $_tabeName (id) )'
           );
         },
-          onOpen: (Database dbb){
-          print("database opened");
-          }
+          onOpen: (Database dbb){}
         );
         // await deleteDatabase(_path);
       }catch(e){
-        print("${e}");
+        print(e);
       }
 
 
@@ -54,31 +52,24 @@ class DBHelper{
   }
 
   static Future<List<Map<String,dynamic>>> queryLose()async{
-    print("queryLose was called ");
     return await _database!.query(_tabeName,where: 'type = ?',whereArgs: [0]);
   }
   static Future<List<Map<String,dynamic>>> queryOver()async{
-    print("queryOver was called ");
-
     return await _database!.query(_tabeName,where: 'type = ?',whereArgs: [1]);
   }
   static Future<List<Map<String,dynamic>>> queryDates(int id)async{
-   print("queryDates was called ");
     return await _database!.query(_tablelName2,where: 'person_id = ?',whereArgs: [id]);
   }
 
 
   static Future<int> attendanceDates(attendance A)async{
-    print("attendance was called");
     return await _database!.insert(_tablelName2 ,A.toJson());
   }
   static Future<int?> count()async{
-    print("count was called");
     int? count = Sqflite.firstIntValue(await _database!.rawQuery('SELECT COUNT(*) FROM $_tabeName'));
     return count;
   }
   static Future<int> updatePayed(int id) async {
-      print("update function called");
       return await _database!.rawUpdate(
         '''
       UPDATE $_tabeName

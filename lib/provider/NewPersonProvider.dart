@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gym2/model/person.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 
 import '../../model/db.dart';
 
@@ -48,7 +47,7 @@ class NewPersonProvider extends ChangeNotifier{
             SnackBar(
               content: Text("Person was Added ",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
             ));
             nameController.clear();
             heightController.clear();
@@ -59,14 +58,14 @@ class NewPersonProvider extends ChangeNotifier{
             SnackBar(
               content: Text("All fields are required!",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
-              duration: Duration(seconds: 3),
+              duration: const Duration(seconds: 3),
             ));
       }else if(getDouble(heightController) == -1 || getDouble(weightController) ==-1 || getDouble(age) ==-1){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(" Enter Numbers !",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
-              duration: Duration(seconds: 3),
+              duration:const Duration(seconds: 3),
             ));
         if(getDouble(heightController) == -1){
           heightController.clear();
@@ -78,11 +77,11 @@ class NewPersonProvider extends ChangeNotifier{
           age.clear();
         }
       }
-      else{
-        print("");
-      }
+
       notifyListeners();
-    }catch(e){print(e);}
+    }catch(e){
+      print(e);
+    }
 
   }
 
@@ -98,7 +97,6 @@ class NewPersonProvider extends ChangeNotifier{
         days: selectedDayes,
         type: selectedType=="Over"? 1 : 0 ,
       ));
-      print("$value");
     }catch(e){
       print(e);
     }
