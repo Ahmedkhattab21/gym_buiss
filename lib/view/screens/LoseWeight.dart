@@ -6,11 +6,11 @@ import '../../provider/LoseWeightProvider.dart';
 
 class LoseWeight extends StatelessWidget {
    LoseWeight({Key? key}) : super(key: key);
-  List<String> Datesss=[
-    "2/9/2022",
-    "3/9/2022",
-    "4/9/2022"
-  ];
+  // List<String> Datesss=[
+  //   "2/9/2022",
+  //   "3/9/2022",
+  //   "4/9/2022"
+  // ];
   @override
   Widget build(BuildContext context) {
 
@@ -75,7 +75,7 @@ class LoseWeight extends StatelessWidget {
                             _buildcell("Attendance",150),
                             _buildcell("payed",130),
                             _buildcell("Type",150),
-                            _buildcell("Dates",(170 * Datesss.length) +0.0),
+                            _buildcell("Dates",(170 * Provider.of<LosingProvider>(context,listen: true).long)+0 ),
 
                           ],
                         ),
@@ -104,7 +104,7 @@ class LoseWeight extends StatelessWidget {
                             _buildcell2("14", 150),
                             _buildcell2(e.payed==0?"payed":"Not Payed", 130),
                             _buildcell2("Lose", 150),
-                            ...Datesss.map((e) => Container(
+                            ...(e.atten_day).map((ee) => Container(
                               decoration: BoxDecoration(
                                 border:Border.all(width: 0),
                                 color: Colors.white,
@@ -112,7 +112,7 @@ class LoseWeight extends StatelessWidget {
                               alignment: Alignment.center,
                               width: 170,
                               height: 60.0,
-                              child: FittedBox(child: Text("${e}",style: Theme.of(context).textTheme.headline2,
+                              child: FittedBox(child: Text("${ee}",style: Theme.of(context).textTheme.headline2,
                               ),
                               ),
                             ) ),

@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gym2/model/person.dart';
@@ -86,19 +87,21 @@ class NewPersonProvider extends ChangeNotifier{
   }
 
   addtodatabase()async{
-
-    int value = await DBHelper.insert(person:Person(
-      name:nameController.text,
-      date: DateFormat.yMd().format(selecteedDate),
-      height:getDouble(heightController),
-      weight:getDouble(weightController) ,
-      age: getDouble(age),
-      payed: selectedPayed=="payed"? 0 : 1 ,
-      days: selectedDayes,
-      type: selectedType=="Over"? 1 : 0 ,
-    ));
-    print("$value");
-
+    try{
+      int value = await DBHelper.insert(person:Person(
+        name:nameController.text,
+        date: DateFormat.yMd().format(selecteedDate),
+        height:getDouble(heightController),
+        weight:getDouble(weightController) ,
+        age: getDouble(age),
+        payed: selectedPayed=="payed"? 0 : 1 ,
+        days: selectedDayes,
+        type: selectedType=="Over"? 1 : 0 ,
+      ));
+      print("$value");
+    }catch(e){
+      print(e);
+    }
   }
 
   double getDouble(TextEditingController){
