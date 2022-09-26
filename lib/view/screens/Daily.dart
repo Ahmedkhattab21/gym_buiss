@@ -24,7 +24,7 @@ class _DailyPageState extends State<DailyPage> {
     Attendance(),
     NewPerson(),
     LoseWeight(),
-    OverWeight()
+    OverWeight(),
   ];
 
   @override
@@ -69,7 +69,7 @@ class _DailyPageState extends State<DailyPage> {
             backgroundImage:AssetImage("assets/images/img1.jpg"),),
           SizedBox(width: 20,),
         ],
-      )
+      ),
     ];
     return Scaffold(
       appBar: Appsbar[currIndex],
@@ -110,7 +110,6 @@ class _DailyPageState extends State<DailyPage> {
           BottomNavigationBarItem(
               icon: Icon(Icons.add,),
               label: "Add"
-
           ),
           BottomNavigationBarItem(
             icon: Icon(FontAwesomeIcons.glassWater),
@@ -119,7 +118,8 @@ class _DailyPageState extends State<DailyPage> {
           BottomNavigationBarItem(
               icon: Icon(FontAwesomeIcons.dumbbell),
               label: "Over"
-          )
+          ),
+
         ],
       ),
     );

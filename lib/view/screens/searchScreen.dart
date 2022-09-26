@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:gym2/model/person.dart';
 import 'package:provider/provider.dart';
 
+import '../../provider/AttendanceProvider.dart';
 import '../../provider/searchProvider.dart';
 import '../widget/button.dart';
 
@@ -23,7 +23,7 @@ class _searchScreenState extends State<searchScreen> {
 
   void initState() {
     super.initState();
-      Provider.of<SearchProvider>(context,listen: false).ssearchinDatabase();
+      Provider.of<SearchProvider>(context,listen: false).ssearchinDatabase(context);
   }
   double getDouble2(String x){
     double? number1=double.tryParse(x)??null;
@@ -37,7 +37,6 @@ class _searchScreenState extends State<searchScreen> {
   @override
   Widget build(BuildContext context) {
      var Dats=Provider.of<SearchProvider>(context,listen: true).Datesss;
-      // Person dattt=Provider.of<SearchProvider>(context,listen: false).pperson[0];
      Widget _buildcell(String txt ,double wid){
        return Container(
          padding:const EdgeInsets.all(5),
@@ -117,9 +116,9 @@ class _searchScreenState extends State<searchScreen> {
                       ),
                       onChanged:(String m){
                         setState((){
-                            (getDouble2(controller.text) !=-1 && controller.text.isNotEmpty)?
-                            Provider.of<SearchProvider>(context,listen: false).ssearchinDatabase(int.parse(m)):Container();
-
+                            (getDouble2(controller.text) !=-1 &&
+                                controller.text.isNotEmpty )?
+                            Provider.of<SearchProvider>(context,listen: false).ssearchinDatabase(context,int.parse(m)):Container();
                         });
                       },
                     ),
@@ -128,16 +127,18 @@ class _searchScreenState extends State<searchScreen> {
               ],
             ),
           ),
-           (getDouble2(controller.text)==-1 || controller.text.isEmpty)?
-          const  Center(child: Text("Enter the Number of Person")):
+
+           Provider.of<SearchProvider>(context,listen: true).vvb ==-1?
+               Container(child: Text("Cant find the Person",style: Theme.of(context).textTheme.headline2,),)
+               : (getDouble2(controller.text) ==-1 || controller.text.isEmpty)?
+            Center(child: Text("Enter the Number of Person",style:Theme.of(context).textTheme.headline2,)):
            Row(
               children: [
               Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
               _buildcell("id", 60),
-              _buildcell2("d", 60),
-
+                ...Provider.of<SearchProvider>(context,listen: false).pperson.map((e) => _buildcell2(e.id.toString(),60),)
               ],
               ),
               Flexible(
@@ -156,59 +157,58 @@ class _searchScreenState extends State<searchScreen> {
                         _buildcell(" Days",90),
                         _buildcell("Attendance",150),
                         _buildcell("payed",130),
-                        _buildcell("Type",150),
-                        _buildcell("Dates",(170 * Dats.length) +0.0),
-
+                        _buildcell("Type",170),
+                        _buildcell("Dates", Provider.of<SearchProvider>(context,listen: true).pperson[0].atten_day.length ==0? 170 : (170 * Provider.of<SearchProvider>(context,listen: true).pperson[0].atten_day.length) +0.0),
                         ],
                       ),
-                      Row(
-                      children: [
-                      Container(
-                        padding: EdgeInsets.all(7),
-                        decoration: BoxDecoration(
-                          border:Border.all(width: 0),
-                          color: Colors.white,
-                        ),
-                        alignment: Alignment.center,
-                        width: 200,
-                        height: 60.0,
-                        child: Text("kj",
-                          overflow:TextOverflow.ellipsis,
-                          textAlign:TextAlign.end
-                          ,style: Theme.of(context).textTheme.headline2,
-                        ),
-                      ),
-                      _buildcell2("x1", 140),
-                      _buildcell2("x2", 90),
-                      _buildcell2("x3", 90),
-                      _buildcell2("x4", 90),
-                      _buildcell2("x5", 90),
-                      _buildcell2("x1", 150),
-                      _buildcell2("x2", 130),
-                      _buildcell2("x3", 150),
-                      ...Dats.map((e) => Container(
-                        decoration: BoxDecoration(
-                        border:Border.all(width: 0),
-                        color: Colors.white,
-                        ),
-                        alignment: Alignment.center,
-                        width: 170,
-                        height: 60.0,
-                        child: FittedBox(child: Text("${e}",style: Theme.of(context).textTheme.headline2,
-                        ),
-                        ),
-                        )
-                      ),
+                      ...Provider.of<SearchProvider>(context,listen: false).pperson.map((e)=>Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(7),
+                            decoration: BoxDecoration(
+                              border:Border.all(width: 0),
+                              color: Colors.white,
+                            ),
+                            alignment: Alignment.center,
+                            width: 200,
+                            height: 60.0,
+                            child: Text(e.name.toString(),
+                              overflow:TextOverflow.ellipsis,
+                              textAlign:TextAlign.end
+                              ,style: Theme.of(context).textTheme.headline2,
+                            ),
+                          ),
+                          _buildcell2(e.date.toString(), 140),
+                          _buildcell2(e.height.toString(), 90),
+                          _buildcell2(e.weight.toString(), 90),
+                          _buildcell2(e.age.toString(), 90),
+                          _buildcell2(e.days.toString(), 90),
+                          _buildcell2(e.atten_day.length.toString(), 150),
+                          _buildcell2(e.payed==0?"payed":"Not Payed", 130),
+                          _buildcell2(e.type==0?"Lose Weight":"Over Weight", 170),
+                          ...(e.atten_day).map((ee) => Container(
+                            decoration: BoxDecoration(
+                              border:Border.all(width: 0),
+                              color: Colors.white,
+                            ),
+                            alignment: Alignment.center,
+                            width: 170,
+                            height: 60.0,
+                            child: FittedBox(child: Text(ee.toString(),style: Theme.of(context).textTheme.headline2,
+                            ),
+                            ),
+                          )
+                          ),
 
-                      ],
-                    ),
+                        ],
+                      ),).toList(),
                     ],
                   ),
                   ),
               ),
               ],
-           ),
-           (getDouble2(controller.text) !=-1 && controller.text.isNotEmpty)?
+    ),
+           (getDouble2(controller.text) !=-1 && controller.text.isNotEmpty && Provider.of<SearchProvider>(context,listen: true).vvb !=-1)?
            Padding(
             padding: const EdgeInsets.only(bottom: 60.0),
             child: Row(
@@ -220,7 +220,8 @@ class _searchScreenState extends State<searchScreen> {
             , wid: 185, hei: 74, cir: 10, color:const Color.fromRGBO(240, 9, 9, .77), text:"Delete"),
             ],
             ),
-            ): Container(),
+            ): Container()
+
         ],
       ),
     );
