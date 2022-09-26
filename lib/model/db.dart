@@ -83,8 +83,11 @@ class DBHelper{
   static Future<int> update(Person person)async{
     return await _database!.update(_tabeName,person.toJson(), where:'id = ?' ,whereArgs: [person.id]);
   }
-  static Future<int> delete(Person person)async{
-    return await _database!.delete(_tabeName, where:'id = ?' ,whereArgs: [person.id]);
+  static Future<int> delete( int id)async{
+    return await _database!.delete(_tabeName, where:'id = ?' ,whereArgs: [id]);
+  }
+  static Future<int> deleteDates(int id)async{
+    return await _database!.delete(_tablelName2, where:'person_id = ?' ,whereArgs: [id]);
   }
 
 

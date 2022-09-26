@@ -214,9 +214,14 @@ class _searchScreenState extends State<searchScreen> {
             child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-            Button(fun: (){}
+            Button(fun: (){
+
+            }
             , wid: 185, hei: 74, cir: 10, color:const Color.fromRGBO(22, 178, 66, 1), text:"Edit"),
-            Button(fun: (){}
+            Button(fun: (){
+              Provider.of<SearchProvider>(context,listen: false).Delete(Provider.of<SearchProvider>(context,listen: false).pperson[0].id);
+
+            }
             , wid: 185, hei: 74, cir: 10, color:const Color.fromRGBO(240, 9, 9, .77), text:"Delete"),
             ],
             ),
