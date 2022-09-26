@@ -35,7 +35,6 @@ class Attendance extends StatelessWidget {
                  const SizedBox(width: 35,),
                   Expanded(
                     child: Button(fun: (){
-                      // DBHelper.updatePayed(999);
                       Provider.of<AttendanceProvider>(context,listen: false).payedValidate(context);
                     }
                         , wid: 177, hei: 89, cir: 20, color: const Color.fromRGBO(22, 178, 66, 1), text:"Pay"),

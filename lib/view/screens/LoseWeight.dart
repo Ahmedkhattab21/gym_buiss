@@ -97,7 +97,7 @@ class LoseWeight extends StatelessWidget {
                             _buildCell2(e.weight.toString(), 90),
                             _buildCell2(e.age.toString(), 90),
                             _buildCell2(e.days.toString(), 90),
-                            _buildCell2("14", 150),
+                            _buildCell2(e.atten_day.length.toString(), 150),
                             _buildCell2(e.payed==0?"payed":"Not Payed", 130),
                             _buildCell2("Lose Weight", 170),
                             ...(e.atten_day).map((ee) => Container(

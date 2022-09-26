@@ -148,7 +148,6 @@ class AddPerson extends StatelessWidget {
                 ],
               ),
             ),
-
           ],
         ),
       ),
