@@ -48,6 +48,7 @@ class DBHelper{
   }
 
   static Future<List<Map<String,dynamic>>>? queryItem(int i)async{
+   print("item");
     return await _database!.query(_tabeName,where:'id = ?' ,whereArgs:[i] );
   }
 
@@ -80,8 +81,14 @@ class DBHelper{
       );
     }
 
-  static Future<int> update(Person person)async{
-    return await _database!.update(_tabeName,person.toJson(), where:'id = ?' ,whereArgs: [person.id]);
+  static Future<int> update(int id,Person person)async{
+    return await _database!.rawUpdate(
+      '''
+      UPDATE $_tabeName
+      SET name = ? , date = ? , height = ? , weight = ? , age = ? , days = ? , type = ? , payed = ? WHERE id = ?
+      ''' ,
+      [person.name,person.date,person.height,person.weight,person.age,
+        person.days,person.type,person.payed,id]);
   }
   static Future<int> delete( int id)async{
     return await _database!.delete(_tabeName, where:'id = ?' ,whereArgs: [id]);
