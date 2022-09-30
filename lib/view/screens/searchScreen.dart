@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gym2/provider/NewPersonProvider.dart';
 import 'package:provider/provider.dart';
 
 import '../../provider/AttendanceProvider.dart';
 import '../../provider/searchProvider.dart';
 import '../widget/button.dart';
+import 'AddPerson.dart';
 
 
 class searchScreen extends StatefulWidget {
@@ -214,9 +216,10 @@ class _searchScreenState extends State<searchScreen> {
             child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-            Button(fun: (){
-
-            }
+            Button(fun: ()async{
+              await Provider.of<NewPersonProvider>(context,listen: false).getIdData(Provider.of<SearchProvider>(context,listen: false).pperson[0].id);
+              Navigator.of(context).pushNamed(AddPerson.routeName,arguments: Provider.of<SearchProvider>(context,listen: false).pperson[0].id);
+              }
             , wid: 185, hei: 74, cir: 10, color:const Color.fromRGBO(22, 178, 66, 1), text:"Edit"),
             Button(fun: (){
               Provider.of<SearchProvider>(context,listen: false).Delete(Provider.of<SearchProvider>(context,listen: false).pperson[0].id);

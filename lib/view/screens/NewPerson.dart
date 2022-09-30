@@ -40,7 +40,7 @@ class NewPerson extends StatelessWidget {
         ),
       ),
           Button(fun: (){
-            Navigator.of(context).pushNamed(AddPerson.routeName);
+            Navigator.of(context).pushNamed(AddPerson.routeName,arguments: 0);
           }
             , wid: 190, hei: 190, cir: 30, color:const Color.fromRGBO(22, 178, 66, 1), text:"+"),
         ],

@@ -94,8 +94,10 @@ class AttendanceProvider extends ChangeNotifier{
       print(e);
     }
   }
+
   Future payed(int id)async{
      int xx= await DBHelper.updatePayed(id);
+     // print(xx);
      if(xx == 1){
        return xx;
      }else{

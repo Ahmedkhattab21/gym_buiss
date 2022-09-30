@@ -2,21 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gym2/provider/NewPersonProvider.dart';
 import 'package:provider/provider.dart';
+import '../../provider/searchProvider.dart';
 import '../widget/button.dart';
 import '../widget/input.dart';
 import 'package:intl/intl.dart';
 
 class AddPerson extends StatelessWidget {
   static const String routeName="/AddPerson";
-
-  AddPerson({Key? key}) : super(key: key);
-
+AddPerson();
   @override
 
 
 
   @override
   Widget build(BuildContext context) {
+    int id=ModalRoute.of(context)!.settings.arguments as int;
+    // Person _person=
+    print(id);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -36,7 +38,7 @@ class AddPerson extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 15.0),
-              child: Text("Add Preson",style: Theme.of(context).textTheme.headline1!.copyWith(fontWeight:FontWeight.w600),),
+              child: Text(id !=0? "Update Preson":"Add Preson",style: Theme.of(context).textTheme.headline1!.copyWith(fontWeight:FontWeight.w600),),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 15,right: 20),
@@ -142,9 +144,12 @@ class AddPerson extends StatelessWidget {
                 children: [
                   Spacer(),
                   Button(fun: (){
+                    id !=0 ?  {Provider.of<NewPersonProvider>(context,listen: false).valedaate2(context,id),
+                      Provider.of<SearchProvider>(context,listen: false).ssearchinDatabase(context,id.toInt())
+                    }:
                   Provider.of<NewPersonProvider>(context,listen: false).valedaate(context);
                     }
-                      , wid: 209, hei: 74, cir: 10, color: const Color.fromRGBO(22, 178, 66, 1), text:"Add Person"),
+                      , wid: 209, hei: 74, cir: 10, color: const Color.fromRGBO(22, 178, 66, 1), text:id !=0 ? "Update":"Add Person"),
                 ],
               ),
             ),
