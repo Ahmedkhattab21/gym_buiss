@@ -47,9 +47,33 @@ class DBHelper{
    return await _database!.insert(_tabeName, person!.toJson());
   }
 
-  static Future<List<Map<String,dynamic>>>? queryItem(int i)async{
-   print("item");
-    return await _database!.query(_tabeName,where:'id = ?' ,whereArgs:[i] );
+  static Future<List<Map<String,dynamic>>>? queryItem(int id)async{
+    return await _database!.query(_tabeName,where:'id = ?' ,whereArgs:[id] );
+  }
+
+  static Future<List<Map<String,dynamic>>>? querydays(int id)async{
+    return await _database!.rawQuery('''
+    SELECT days FROM $_tabeName 
+    WHERE id = ?
+    ''',
+      [id]
+    );
+  }
+  static Future<List<Map<String,dynamic>>>? queryStartDate(int id)async{
+    return await _database!.rawQuery('''
+    SELECT date FROM $_tabeName 
+    WHERE id = ?
+    ''',
+        [id]
+    );
+  }
+  static Future<List<Map<String,dynamic>>>? queryPayed(int id)async{
+    return await _database!.rawQuery('''
+    SELECT payed FROM $_tabeName 
+    WHERE id = ?
+    ''',
+        [id]
+    );
   }
 
   static Future<List<Map<String,dynamic>>> queryLose()async{
@@ -66,10 +90,9 @@ class DBHelper{
   static Future<int> attendanceDates(attendance A)async{
     return await _database!.insert(_tablelName2 ,A.toJson());
   }
-  static Future<int?> count()async{
-    int? count = Sqflite.firstIntValue(await _database!.rawQuery('SELECT COUNT(*) FROM $_tabeName'));
-    return count;
-  }
+  static Future<List<Map<String, Object?>>> count()async{
+   return await _database!.rawQuery("SELECT * FROM $_tabeName ORDER BY id DESC LIMIT 1");
+ }
   static Future<int> updatePayed(int id) async {
       return await _database!.rawUpdate(
         '''

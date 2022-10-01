@@ -19,7 +19,7 @@ class Attendance extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 60,top: 20,right: 20),
-              child: Input(txt: "Daily Attendance",hintTxt: "Enter your Number",controller: Provider.of<AttendanceProvider>(context,listen: false).controller,),
+              child: Input(txt: "Person Number",hintTxt: "Enter your Number",controller: Provider.of<AttendanceProvider>(context,listen: false).controller,),
             ),
             Padding(
               padding:const EdgeInsets.all(20),
@@ -41,6 +41,13 @@ class Attendance extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            Padding(
+              padding:const EdgeInsets.symmetric(vertical: 5,horizontal: 20),
+              child: Button(fun: (){
+                Provider.of<AttendanceProvider>(context,listen: false).valedaateSubscribtion(context);
+              }
+                  , wid: double.infinity, hei: 89, cir: 20, color: const Color.fromRGBO(22, 178, 66, 1), text:"Subscription"),
             ),
           ],
         ),
