@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:gym2/model/db.dart';
 import 'package:gym2/view/screens/Daily.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -25,7 +26,7 @@ class MyHomePage extends StatelessWidget {
                       color: Colors.black,
                     ),),
                     InkWell(
-                      onTap: (){
+                      onTap: ()async{
                         Navigator.of(context).pushReplacementNamed(DailyPage.routeName);
                       },
                       child: Container(

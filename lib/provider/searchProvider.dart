@@ -56,6 +56,7 @@ class SearchProvider extends ChangeNotifier{
   Future<void> Delete(int? id)async{
     await DBHelper.delete(id!);
     await DBHelper.deleteDates(id);
+    notifyListeners();
   }
 }
 

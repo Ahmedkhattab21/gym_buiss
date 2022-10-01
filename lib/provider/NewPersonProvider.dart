@@ -146,6 +146,7 @@ class NewPersonProvider extends ChangeNotifier{
         days: selectedDayes,
         type: selectedType=="Over"? 1 : 0 ,
       ));
+      notifyListeners();
     }catch(e){
       print(e);
     }
@@ -182,7 +183,6 @@ class NewPersonProvider extends ChangeNotifier{
       pp.addAll(per!.map((e) => Person.fromJson(e)).toList());
       List<String> ll= pp[0].date!.split('/');
       DateTime m=DateTime(int.parse(ll[2]),int.parse(ll[0]),int.parse(ll[1]));
-      print(" m${pp[0].name}");
     nameController.text =pp[0].name.toString();
     selecteedDate = m;
     heightController.text=pp[0].height.toString();
@@ -204,7 +204,6 @@ class NewPersonProvider extends ChangeNotifier{
           mode : CupertinoDatePickerMode.date,
           initialDateTime: selecteedDate,
           minimumYear: 2020,
-          maximumYear: 2040,
           onDateTimeChanged: (DateTime d){
             selecteedDate=d;
             notifyListeners();
