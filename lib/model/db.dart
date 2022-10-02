@@ -67,6 +67,16 @@ class DBHelper{
         [id]
     );
   }
+  static Future<int?> updateStartDate(int id,String date)async{
+    return await _database!.rawUpdate('''
+    UPDATE $_tabeName 
+    SET date = ?
+    WHERE id = ?
+    ''',
+        [date,id]
+    );
+  }
+
   static Future<List<Map<String,dynamic>>>? queryPayed(int id)async{
     return await _database!.rawQuery('''
     SELECT payed FROM $_tabeName 
