@@ -195,18 +195,43 @@ class AttendanceProvider extends ChangeNotifier{
       return -1;
     }
   }
-  subscribtion(BuildContext context,int id)async{}
+  subscribtion(BuildContext context,int id)async{
+    // DateTime dateTime=DateTime.now();
+    // List<Map<String, dynamic>>? startDate = await DBHelper.updateStartDate(id,DateFormat.yMd().format(dateTime));
+    // print(startDate);
+    // if(startDate!.isNotEmpty){
+    //   print("ggg");
+    //   // await DBHelper.deleteDates(id);
+    //   print(await DBHelper.queryDates(id));
+    // }else{
+    //   print("kk not ");
+    // }
+    //
+
+  }
   valedaateSubscribtion(BuildContext context)async{
     try{
       if(controller.text.isNotEmpty && getDouble(controller) !=-1 && getDouble(controller) <= await count()){
-        subscribtion(context,int.parse(controller.text));
-        controller.clear();
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text("Subscribed ",style: Theme.of(context).textTheme.headline2,),
-              backgroundColor: Colors.white,
-              duration:const Duration(seconds: 2),
-            ));
+
+        DateTime dateTime=DateTime.now();
+         int? startDate = await DBHelper.updateStartDate(int.parse(controller.text),DateFormat.yMd().format(dateTime));
+        if(startDate ==1){
+          await DBHelper.deleteDates(int.parse(controller.text));
+          controller.clear();
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Done ",style: Theme.of(context).textTheme.headline2,),
+                backgroundColor: Colors.white,
+                duration:const Duration(seconds: 2),
+              ));
+        }else{
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("The Number Not Found",style: Theme.of(context).textTheme.headline2,),
+                backgroundColor: Colors.white,
+                duration:const Duration(seconds: 2),
+              ));
+        }
       }else if(controller.text.isEmpty){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -236,3 +261,4 @@ class AttendanceProvider extends ChangeNotifier{
   }
 
 }
+
