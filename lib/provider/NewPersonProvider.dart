@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym2/model/person.dart';
 import 'package:intl/intl.dart';
 
@@ -13,40 +14,49 @@ class NewPersonProvider extends ChangeNotifier{
   TextEditingController heightController=TextEditingController();
   TextEditingController weightController=TextEditingController();
   TextEditingController age=TextEditingController();
-  DateTime selecteedDate=DateTime.now();
+  DateTime selectedDate=DateTime.now();
 
 
-  int selectedDayes= 3;
+  int? selectedDays;
 
   List<int> daysList=[
     3,
     4,
     6
   ];
-  String selectedType="Lose";
+  String? selectedType;
 
   List<String> typeList=[
-    "Lose",
-    "Over"
+    "تخسيس",
+    "حديد"
   ];
-  String selectedPayed="payed";
+  String? selectedPayed;
 
   List<String> payed=[
-    "payed",
-    "Not Payed"
+    "دفع",
+    "لم يدفع"
   ];
 
+  clearData(){
+    nameController.clear();
+    heightController.clear();
+    weightController.clear();
+    age.clear();
+    selectedDays=null;
+    selectedType=null;
+    selectedPayed=null;
+  }
 
-  valedaate(BuildContext context){
+  validateAddItem(BuildContext context){
     try{
       if(nameController.text.isNotEmpty && heightController.text.isNotEmpty && weightController.text.isNotEmpty && age.text.isNotEmpty
           &&  getDouble(heightController) != -1 && getDouble(weightController) !=-1 && getDouble(age) !=-1
       ){
-        addtodatabase();
+        addToDatabase();
         Navigator.of(context).pop();
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("Person was Added ",style: Theme.of(context).textTheme.headline2,),
+              content: Text("تم اضافة الشخص",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
               duration: const Duration(seconds: 2),
             ));
@@ -57,14 +67,14 @@ class NewPersonProvider extends ChangeNotifier{
       } else if(nameController.text.isEmpty || heightController.text.isEmpty || weightController.text.isEmpty || age.text.isEmpty){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("All fields are required!",style: Theme.of(context).textTheme.headline2,),
+              content: Text("اكمل جميع البيانات",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
               duration: const Duration(seconds: 3),
             ));
       }else if(getDouble(heightController) == -1 || getDouble(weightController) ==-1 || getDouble(age) ==-1){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(" Enter Numbers !",style: Theme.of(context).textTheme.headline2,),
+              content: Text("ادخل الارقام صحيحه",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
               duration:const Duration(seconds: 3),
             ));
@@ -85,7 +95,9 @@ class NewPersonProvider extends ChangeNotifier{
     }
 
   }
-  valedaate2(BuildContext context,int id )async{
+
+
+  validateUpdateItem(BuildContext context,int id )async{
     try{
       if(nameController.text.isNotEmpty && heightController.text.isNotEmpty && weightController.text.isNotEmpty && age.text.isNotEmpty
           &&  getDouble(heightController) != -1 && getDouble(weightController) !=-1 && getDouble(age) !=-1
@@ -94,7 +106,7 @@ class NewPersonProvider extends ChangeNotifier{
         Navigator.of(context).pop();
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("Person was Updated ",style: Theme.of(context).textTheme.headline2,),
+              content: Text("تم تحديث البيانات",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
               duration: const Duration(seconds: 2),
             ));
@@ -105,14 +117,14 @@ class NewPersonProvider extends ChangeNotifier{
       } else if(nameController.text.isEmpty || heightController.text.isEmpty || weightController.text.isEmpty || age.text.isEmpty){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("All fields are required!",style: Theme.of(context).textTheme.headline2,),
+              content: Text("اكمل جميع البيانات",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
               duration: const Duration(seconds: 3),
             ));
       }else if(getDouble(heightController) == -1 || getDouble(weightController) ==-1 || getDouble(age) ==-1){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(" Enter Numbers !",style: Theme.of(context).textTheme.headline2,),
+              content: Text("ادخل الارقام صحيحه",style: Theme.of(context).textTheme.headline2,),
               backgroundColor: Colors.white,
               duration:const Duration(seconds: 3),
             ));
@@ -134,17 +146,17 @@ class NewPersonProvider extends ChangeNotifier{
 
   }
 
-  addtodatabase()async{
+  addToDatabase()async{
     try{
       int value = await DBHelper.insert(person:Person(
         name:nameController.text,
-        date: DateFormat.yMd().format(selecteedDate),
+        date: DateFormat.yMd().format(selectedDate),
         height:getDouble(heightController),
         weight:getDouble(weightController) ,
         age: getDouble(age),
-        payed: selectedPayed=="payed"? 0 : 1 ,
-        days: selectedDayes,
-        type: selectedType=="Over"? 1 : 0 ,
+        payed: selectedPayed=="دفع"? 0 : 1 ,
+        days: selectedDays,
+        type: selectedType=="حديد"? 1 : 0 ,
       ));
       notifyListeners();
     }catch(e){
@@ -155,19 +167,19 @@ class NewPersonProvider extends ChangeNotifier{
      await DBHelper.update(
         id,Person(
           name:nameController.text,
-          date: DateFormat.yMd().format(selecteedDate),
+          date: DateFormat.yMd().format(selectedDate),
           height:getDouble(heightController),
           weight:getDouble(weightController) ,
           age: getDouble(age),
-          payed: selectedPayed=="payed"? 0 : 1 ,
-          days: selectedDayes,
-          type: selectedType=="Over"? 1 : 0 ,
+          payed: selectedPayed=="دفع"? 0 : 1 ,
+          days: selectedDays,
+          type: selectedType=="حديد"? 1 : 0 ,
         )
     );
   }
 
-  double getDouble(TextEditingController){
-    double? number1=double.tryParse(TextEditingController.text as String)??null;
+  double getDouble(TextEditingController textEditingController){
+    double? number1=double.tryParse(textEditingController.text);
     if(number1 != null){
      return number1; 
     }else{
@@ -176,7 +188,6 @@ class NewPersonProvider extends ChangeNotifier{
   }
 
   getIdData(id)async{
-    print("jq");
     if(id!=0){
       pp.clear();
       List<Map<String, dynamic>>? per = await DBHelper.queryItem(id);
@@ -184,28 +195,28 @@ class NewPersonProvider extends ChangeNotifier{
       List<String> ll= pp[0].date!.split('/');
       DateTime m=DateTime(int.parse(ll[2]),int.parse(ll[0]),int.parse(ll[1]));
     nameController.text =pp[0].name.toString();
-    selecteedDate = m;
+    selectedDate = m;
     heightController.text=pp[0].height.toString();
     weightController.text=pp[0].weight.toString();
     age.text=pp[0].age.toString();
-    selectedType= pp[0].type==0?"Lose":"Over";
-    selectedPayed= pp[0].payed==0?"payed":"Not Payed";
+    selectedType= pp[0].type==0?"تخسيس":"حديد";
+    selectedPayed= pp[0].payed==0?"دفع":"لم يدفع";
     }
     notifyListeners();
   }
 
-  getDateFromUser(BuildContext ctxx)async{
+  getDateFromUser(BuildContext context)async{
     await showCupertinoModalPopup(
-      context: ctxx,
+      context: context,
       builder: (BuildContext ctx)=>Container(
-        height: 200,
+        height: 200.h,
         color: Colors.white,
         child: CupertinoDatePicker(
           mode : CupertinoDatePickerMode.date,
-          initialDateTime: selecteedDate,
+          initialDateTime: selectedDate,
           minimumYear: 2020,
           onDateTimeChanged: (DateTime d){
-            selecteedDate=d;
+            selectedDate=d;
             notifyListeners();
           },),
       ),
@@ -213,11 +224,11 @@ class NewPersonProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  ontapp(String? x){
-    selectedDayes=int.parse(x!);
+  onTap(String? x){
+    selectedDays=int.parse(x!);
     notifyListeners();
   }
-  ontapp2(String? x){
+  onTap2(String? x){
     selectedType=x!;
     notifyListeners();
   }

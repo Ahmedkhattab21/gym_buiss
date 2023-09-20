@@ -5,34 +5,34 @@ import '../../model/db.dart';
 
 
 class SearchProvider extends ChangeNotifier{
-  List<Person> pperson=[];
-  List<attendance>  Datesss=[];
+  TextEditingController controller = TextEditingController();
+  GlobalKey<FormState> globalKey = GlobalKey();
+
+  List<Person> person=[];
+  List<attendance>  dates=[];
   int vvb=-1;
 
   Future<void> getDates(int id)async{
-    try{
       List<Map<String,dynamic>>? dat=await DBHelper.queryDates(id);
-      Datesss.clear();
-      Datesss.addAll(dat.map((date) => attendance.fromJson(date)).toList());
+      dates.clear();
+      dates.addAll(dat.map((date) => attendance.fromJson(date)).toList());
       notifyListeners();
-    }catch(e){
-      print(e);
-    }
+
   }
-  Future<void> ssearchinDatabase(BuildContext context,[int id=0])async{
+
+  Future<void> searchInDatabase(BuildContext context,[int id=0])async{
     try{
       List<Map<String, dynamic>>? per = await DBHelper.queryItem(id);
-      print("per $per");
       if(per!.isNotEmpty){
         vvb=0;
-        pperson.clear();
-        pperson.addAll(per.map((data) {
+        person.clear();
+        person.addAll(per.map((data) {
           getDates(data['id']).then((_) {
             List<String> mm=[];
-            for(var i in Datesss){
+            for(var i in dates){
               mm.add(i.atten_days);
             }
-            for(var ii in pperson){
+            for(var ii in person){
               if(ii.id == data['id']){
                 ii.atten_day=mm;
               }
@@ -53,9 +53,26 @@ class SearchProvider extends ChangeNotifier{
     }
   }
 
-  Future<void> Delete(int? id)async{
-    await DBHelper.delete(id!);
-    await DBHelper.deleteDates(id);
+  Future<void> delete(int? id)async{
+    try {
+      await DBHelper.delete(id!);
+      await DBHelper.deleteDates(id);
+      notifyListeners();
+    }catch(e){
+      print(e);
+    }
+  }
+
+  int getDouble2(String x){
+    int? number1=int.tryParse(x);
+    if(number1 != null){
+      return number1;
+    }else{
+      return -1;
+    }
+  }
+
+  changeState(){
     notifyListeners();
   }
 }

@@ -103,14 +103,14 @@ class DBHelper{
   static Future<List<Map<String, Object?>>> count()async{
    return await _database!.rawQuery("SELECT * FROM $_tabeName ORDER BY id DESC LIMIT 1");
  }
-  static Future<int> updatePayed(int id) async {
+  static Future<int> updatePayed(int id,int payed) async {
       return await _database!.rawUpdate(
         '''
       UPDATE $_tabeName
       SET payed = ?
       WHERE id = ?
       ''',
-        [0, id],
+        [payed, id],
       );
     }
 

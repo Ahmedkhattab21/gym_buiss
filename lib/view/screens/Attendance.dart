@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym2/provider/AttendanceProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -18,36 +19,36 @@ class Attendance extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 60,top: 20,right: 20),
-              child: Input(txt: "Person Number",hintTxt: "Enter your Number",controller: Provider.of<AttendanceProvider>(context,listen: false).controller,),
+              padding: EdgeInsets.only(bottom: 60.h,top: 20.h,right: 20.w),
+              child: Input(txt: "رقم الشخص ",hintTxt: "ادخل رقمك",controller: Provider.of<AttendanceProvider>(context,listen: false).controller,),
             ),
             Padding(
-              padding:const EdgeInsets.all(20),
+              padding:EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.r),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Expanded(
                     child: Button(fun: (){
-                      Provider.of<AttendanceProvider>(context,listen: false).valedaate(context);
+                      Provider.of<AttendanceProvider>(context,listen: false).validate(context);
                       }
-                    , wid: 177, hei: 89, cir: 20, color: const Color.fromRGBO(22, 178, 66, 1), text:"Add"),
+                    , wid: 177.w, hei: 89.h, cir: 20.r, color: const Color.fromRGBO(22, 178, 66, 1), text:"اضافة"),
                   ),
-                 const SizedBox(width: 35,),
+                  SizedBox(width: 35.w),
                   Expanded(
                     child: Button(fun: (){
                       Provider.of<AttendanceProvider>(context,listen: false).payedValidate(context);
                     }
-                        , wid: 177, hei: 89, cir: 20, color: const Color.fromRGBO(22, 178, 66, 1), text:"Pay"),
+                        , wid: 177.w, hei: 89.h, cir: 20.r, color: const Color.fromRGBO(22, 178, 66, 1), text:"دفع"),
                   ),
                 ],
               ),
             ),
             Padding(
-              padding:const EdgeInsets.symmetric(vertical: 5,horizontal: 20),
+              padding: EdgeInsets.symmetric(vertical: 5.h,horizontal: 20.w),
               child: Button(fun: (){
-                Provider.of<AttendanceProvider>(context,listen: false).valedaateSubscribtion(context);
+                Provider.of<AttendanceProvider>(context,listen: false).validateSubscription(context);
               }
-                  , wid: double.infinity, hei: 89, cir: 20, color: const Color.fromRGBO(22, 178, 66, 1), text:"Subscription"),
+                  , wid: double.infinity, hei: 89.h, cir: 20.r, color: const Color.fromRGBO(22, 178, 66, 1), text:"تجديد اشتراك"),
             ),
           ],
         ),

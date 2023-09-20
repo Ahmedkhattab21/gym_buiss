@@ -9,6 +9,7 @@ class LosingProvider extends ChangeNotifier{
    int long=0;
   List<Person> person=[];
   List<attendance> dates=[];
+
  Future<void> getDatesLoseWeight(int id)async{
    try{
      List<Map<String,dynamic>>? dat=await DBHelper.queryDates(id);
