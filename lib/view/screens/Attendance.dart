@@ -19,7 +19,7 @@ class Attendance extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(bottom: 60.h,top: 20.h,right: 20.w),
+              padding: EdgeInsets.only(bottom: 50.h,top: 20.h,right: 20.w),
               child: Input(txt: "رقم الشخص ",hintTxt: "ادخل رقمك",controller: Provider.of<AttendanceProvider>(context,listen: false).controller,),
             ),
             Padding(
@@ -31,14 +31,14 @@ class Attendance extends StatelessWidget {
                     child: Button(fun: (){
                       Provider.of<AttendanceProvider>(context,listen: false).validate(context);
                       }
-                    , wid: 177.w, hei: 89.h, cir: 20.r, color: const Color.fromRGBO(22, 178, 66, 1), text:"اضافة"),
+                    , wid: 150.w, hei: 70.h, cir: 20.r, color: const Color.fromRGBO(22, 178, 66, 1), text:"اضافة"),
                   ),
                   SizedBox(width: 35.w),
                   Expanded(
                     child: Button(fun: (){
                       Provider.of<AttendanceProvider>(context,listen: false).payedValidate(context);
                     }
-                        , wid: 177.w, hei: 89.h, cir: 20.r, color: const Color.fromRGBO(22, 178, 66, 1), text:"دفع"),
+                        , wid: 150.w, hei: 70.h, cir: 20.r, color: const Color.fromRGBO(22, 178, 66, 1), text:"دفع"),
                   ),
                 ],
               ),
@@ -48,7 +48,7 @@ class Attendance extends StatelessWidget {
               child: Button(fun: (){
                 Provider.of<AttendanceProvider>(context,listen: false).validateSubscription(context);
               }
-                  , wid: double.infinity, hei: 89.h, cir: 20.r, color: const Color.fromRGBO(22, 178, 66, 1), text:"تجديد اشتراك"),
+                  , wid: double.infinity, hei: 80.h, cir: 20.r, color: const Color.fromRGBO(22, 178, 66, 1), text:"تجديد اشتراك"),
             ),
           ],
         ),

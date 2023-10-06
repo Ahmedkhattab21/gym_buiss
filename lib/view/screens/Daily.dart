@@ -40,11 +40,11 @@ class _DailyPageState extends State<DailyPage> {
           unselectedItemColor: Colors.black54,
           selectedIconTheme: IconThemeData(
             color:const Color.fromRGBO(22, 178, 66, 1),
-            size: 38.r,
+            size: 30.r,
           ),
           unselectedIconTheme: IconThemeData(
             color: Colors.black54,
-            size: 28.r,
+            size: 25.r,
           ),
           currentIndex: Provider.of<AttendanceProvider>(context,listen: true).currIndex,
           onTap: (int i){
@@ -73,7 +73,6 @@ class _DailyPageState extends State<DailyPage> {
                 icon: Icon(FontAwesomeIcons.dumbbell),
                 label: "حديد"
             ),
-
           ],
         ),
       ),

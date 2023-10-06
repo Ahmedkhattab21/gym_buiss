@@ -22,8 +22,8 @@ void main() async {
   await windowManager.ensureInitialized();
 
   if (Platform.isWindows || Platform.isMacOS) {
-    WindowManager.instance.setMinimumSize(const Size(500, 850));
-    WindowManager.instance.setMaximumSize(const Size(500, 850));
+   await WindowManager.instance.setMinimumSize(const Size(500, 650));
+    await WindowManager.instance.setMaximumSize(const Size(500, 650));
   }
   await DBHelper.initDb();
   runApp(
@@ -60,17 +60,17 @@ class MyApp extends StatelessWidget {
                   secondary: const Color.fromRGBO(238, 238, 238, .45)),
               textTheme:  TextTheme(
                 headline1: TextStyle(
-                  fontSize: 32.sp,
+                  fontSize: 25.sp,
                   fontWeight: FontWeight.w200,
                   color: Colors.black,
                 ),
                 headline2: TextStyle(
-                  fontSize: 24.sp,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.w200,
                   color: Colors.black,
                 ),
                 button: TextStyle(
-                  fontSize: 32.sp,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
                 ),
