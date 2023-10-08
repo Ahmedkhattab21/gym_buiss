@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym2/model/person.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 class DBHelper{
   static Database? _database;
@@ -8,40 +8,38 @@ class DBHelper{
   static const String _tabeName='persons';
   static const String _tablelName2='attendancePerson';
 
- static Future<void> initDb()async{
-    if(_database != null){
+  static Future<void> initDb()async {
+    if (_database != null) {
       debugPrint("is created");
-    }else{
-      try{
-
-        String  _path = await getDatabasesPath()+'person.db';
-        _database=await openDatabase(_path,version: _version,onCreate:(Database db, int version)async{
-          await db.execute(
-              'CREATE TABLE $_tabeName ('
-                  'id INTEGER PRIMARY KEY AUTOINCREMENT,'
-                  'name TEXT ,date TEXT,height REAL,'
-                  'weight REAL ,age REAL ,payed INTEGER ,days INTEGER ,type INTEGER )'
-          );
-          await db.execute(
-              'CREATE TABLE $_tablelName2 ('
-                  'person_id INTEGER,atten_days TEXT ,'
-                  'FOREIGN KEY (person_id) '
-                  'REFERENCES $_tabeName (id) )'
-          );
-        },
-          onOpen: (Database dbb){}
+    } else {
+      try {
+        sqfliteFfiInit();
+        final databaseFactory = databaseFactoryFfi;
+        _database = await databaseFactory.openDatabase(
+          inMemoryDatabasePath,
+          options: OpenDatabaseOptions(
+            onCreate: (Database db, int version)async{
+              await db.execute(
+                  'CREATE TABLE $_tabeName ('
+                      'id INTEGER PRIMARY KEY AUTOINCREMENT,'
+                      'name TEXT ,date TEXT,height REAL,'
+                      'weight REAL ,age REAL ,payed INTEGER ,days INTEGER ,type INTEGER )'
+              );
+              await db.execute(
+                  'CREATE TABLE $_tablelName2 ('
+                      'person_id INTEGER,atten_days TEXT ,'
+                      'FOREIGN KEY (person_id) '
+                      'REFERENCES $_tabeName (id) )'
+              );
+            },
+            version: _version,
+          ),
         );
-        // await deleteDatabase(_path);
-      }catch(e){
+      } catch (e) {
         print(e);
       }
-
-
     }
   }
-
-
-
 
  static Future<int> insert({required Person? person})async{
    return await _database!.insert(_tabeName, person!.toJson());
