@@ -22,7 +22,7 @@ void main() async {
   await windowManager.ensureInitialized();
 
   if (Platform.isWindows || Platform.isMacOS) {
-   await WindowManager.instance.setMinimumSize(const Size(500, 650));
+   await WindowManager.instance.setMinimumSize(const Size(500, 400));
     await WindowManager.instance.setMaximumSize(const Size(500, 650));
   }
   await DBHelper.initDb();
@@ -53,7 +53,6 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'جيم',
             debugShowCheckedModeBanner: false,
-
             theme: ThemeData(
               primaryColor: const Color.fromRGBO(22, 178, 66, 1),
               colorScheme: ColorScheme.fromSwatch().copyWith(
