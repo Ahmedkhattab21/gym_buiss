@@ -56,7 +56,7 @@ class NewPersonProvider extends ChangeNotifier{
         Navigator.of(context).pop();
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("تم اضافة الشخص",style: Theme.of(context).textTheme.headline2,),
+              content: Text("تم اضافة الشخص",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration: const Duration(seconds: 2),
             ));
@@ -67,14 +67,14 @@ class NewPersonProvider extends ChangeNotifier{
       } else if(nameController.text.isEmpty || heightController.text.isEmpty || weightController.text.isEmpty || age.text.isEmpty){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("اكمل جميع البيانات",style: Theme.of(context).textTheme.headline2,),
+              content: Text("اكمل جميع البيانات",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration: const Duration(seconds: 3),
             ));
       }else if(getDouble(heightController) == -1 || getDouble(weightController) ==-1 || getDouble(age) ==-1){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("ادخل الارقام صحيحه",style: Theme.of(context).textTheme.headline2,),
+              content: Text("ادخل الارقام صحيحه",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration:const Duration(seconds: 3),
             ));
@@ -106,7 +106,7 @@ class NewPersonProvider extends ChangeNotifier{
         Navigator.of(context).pop();
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("تم تحديث البيانات",style: Theme.of(context).textTheme.headline2,),
+              content: Text("تم تحديث البيانات",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration: const Duration(seconds: 2),
             ));
@@ -117,14 +117,14 @@ class NewPersonProvider extends ChangeNotifier{
       } else if(nameController.text.isEmpty || heightController.text.isEmpty || weightController.text.isEmpty || age.text.isEmpty){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("اكمل جميع البيانات",style: Theme.of(context).textTheme.headline2,),
+              content: Text("اكمل جميع البيانات",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration: const Duration(seconds: 3),
             ));
       }else if(getDouble(heightController) == -1 || getDouble(weightController) ==-1 || getDouble(age) ==-1){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("ادخل الارقام صحيحه",style: Theme.of(context).textTheme.headline2,),
+              content: Text("ادخل الارقام صحيحه",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration:const Duration(seconds: 3),
             ));

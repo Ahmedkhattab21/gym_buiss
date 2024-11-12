@@ -36,7 +36,7 @@ class MyHomePage extends StatelessWidget {
                     width: md.width *.25,
                     height:md.height * .1,
                     decoration: BoxDecoration(color:Theme.of(context).primaryColor,borderRadius: BorderRadius.circular(15)),
-                    child: Text("ابدا",style: Theme.of(context).textTheme.button,),
+                    child: Text("ابدا",style: Theme.of(context).textTheme.displaySmall,),
                   ),),
               ],
             ),

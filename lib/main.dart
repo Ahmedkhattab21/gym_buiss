@@ -59,17 +59,17 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSwatch().copyWith(
                   secondary: const Color.fromRGBO(238, 238, 238, .45)),
               textTheme:  TextTheme(
-                headline1: TextStyle(
+                displayLarge: TextStyle(
                   fontSize: 25.sp,
                   fontWeight: FontWeight.w200,
                   color: Colors.black,
                 ),
-                headline2: TextStyle(
+                displayMedium: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w200,
                   color: Colors.black,
                 ),
-                button: TextStyle(
+                displaySmall: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
                   color: Colors.white,

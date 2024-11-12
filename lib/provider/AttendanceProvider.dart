@@ -25,7 +25,7 @@ class AttendanceProvider extends ChangeNotifier{
     AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-      title: Text("الحضور",style: Theme.of(context).textTheme.headline2,),
+      title: Text("الحضور",style: Theme.of(context).textTheme.displayMedium,),
       actions:  [
         const CircleAvatar(
           backgroundImage:AssetImage("assets/images/img1.jpg"),),
@@ -35,7 +35,7 @@ class AttendanceProvider extends ChangeNotifier{
     AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-      title: Text("اضافة عميل",style: Theme.of(context).textTheme.headline2,),
+      title: Text("اضافة عميل",style: Theme.of(context).textTheme.displayMedium,),
       actions: const [
         CircleAvatar(
           backgroundImage:AssetImage("assets/images/img1.jpg"),),
@@ -45,7 +45,7 @@ class AttendanceProvider extends ChangeNotifier{
     AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-      title: Text("تخسيس",style: Theme.of(context).textTheme.headline2,),
+      title: Text("تخسيس",style: Theme.of(context).textTheme.displayMedium,),
       actions: const [
         CircleAvatar(
           backgroundImage:AssetImage("assets/images/img1.jpg"),),
@@ -55,7 +55,7 @@ class AttendanceProvider extends ChangeNotifier{
     AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-      title: Text("حديد",style: Theme.of(context).textTheme.headline2,),
+      title: Text("حديد",style: Theme.of(context).textTheme.displayMedium,),
       actions: const [
         CircleAvatar(
           backgroundImage:AssetImage("assets/images/img1.jpg"),),
@@ -86,7 +86,7 @@ class AttendanceProvider extends ChangeNotifier{
                   DateTime.utc(int.parse(li2[2]),int.parse(li2[0]),int.parse(li2[1])).month <DateTime.now().month )){
                 ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text("انتهي الاشتراك",style: Theme.of(context).textTheme.headline2,),
+                  content: Text("انتهي الاشتراك",style: Theme.of(context).textTheme.displayMedium,),
                   backgroundColor: Colors.white,
                   duration:const Duration(seconds: 2),
                 ));
@@ -95,7 +95,7 @@ class AttendanceProvider extends ChangeNotifier{
                 addAttendanceToDatabase(int.parse(controller.text));
                 ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text("تمت الاضافة ",style: Theme.of(context).textTheme.headline2,),
+                      content: Text("تمت الاضافة ",style: Theme.of(context).textTheme.displayMedium,),
                       backgroundColor: Colors.white,
                       duration:const Duration(seconds: 2),
                     ));
@@ -107,7 +107,7 @@ class AttendanceProvider extends ChangeNotifier{
                   DateTime.utc(int.parse(li2[2]),int.parse(li2[0]),int.parse(li2[1])).month <DateTime.now().month )){
                 ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text("انتهي الاشتراك",style: Theme.of(context).textTheme.headline2,),
+                      content: Text("انتهي الاشتراك",style: Theme.of(context).textTheme.displayMedium,),
                       backgroundColor: Colors.white,
                       duration:const Duration(seconds: 2),
                     ));
@@ -117,7 +117,7 @@ class AttendanceProvider extends ChangeNotifier{
                 addAttendanceToDatabase(int.parse(controller.text));
                 ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text("تمت الاضافة ",style: Theme.of(context).textTheme.headline2,),
+                      content: Text("تمت الاضافة ",style: Theme.of(context).textTheme.displayMedium,),
                       backgroundColor: Colors.white,
                       duration:const Duration(seconds: 2),
                     ));
@@ -129,7 +129,7 @@ class AttendanceProvider extends ChangeNotifier{
                   DateTime.utc(int.parse(li2[2]),int.parse(li2[0]),int.parse(li2[1])).month <DateTime.now().month ){
                 ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text("انتهي الاشتراك",style: Theme.of(context).textTheme.headline2,),
+                      content: Text("انتهي الاشتراك",style: Theme.of(context).textTheme.displayMedium,),
                       backgroundColor: Colors.white,
                       duration:const Duration(seconds: 2),
                     ));
@@ -138,7 +138,7 @@ class AttendanceProvider extends ChangeNotifier{
                 addAttendanceToDatabase(int.parse(controller.text));
                 ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text("تمت الاضافة  ",style: Theme.of(context).textTheme.headline2,),
+                      content: Text("تمت الاضافة  ",style: Theme.of(context).textTheme.displayMedium,),
                       backgroundColor: Colors.white,
                       duration:const Duration(seconds: 2),
                     ));
@@ -149,7 +149,7 @@ class AttendanceProvider extends ChangeNotifier{
         }else{
           ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text("الشخص غير موجود",style: Theme.of(context).textTheme.headline2,),
+                content: Text("الشخص غير موجود",style: Theme.of(context).textTheme.displayMedium,),
                 backgroundColor: Colors.white,
                 duration:const Duration(seconds: 2),
               ));
@@ -158,7 +158,7 @@ class AttendanceProvider extends ChangeNotifier{
       else if(controller.text.isEmpty){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("ادخل رقم الشخص",style: Theme.of(context).textTheme.headline2,),
+              content: Text("ادخل رقم الشخص",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration: const Duration(seconds: 2),
             ));
@@ -166,7 +166,7 @@ class AttendanceProvider extends ChangeNotifier{
       else if(getDouble(controller) == -1){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("ادخل رقم الشخص صحيح",style: Theme.of(context).textTheme.headline2,),
+              content: Text("ادخل رقم الشخص صحيح",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration:const Duration(seconds: 2),
             ));
@@ -174,7 +174,7 @@ class AttendanceProvider extends ChangeNotifier{
       else if( getDouble(controller) >= await count()){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("رقم الشخص ليس موجود",style: Theme.of(context).textTheme.headline2,),
+              content: Text("رقم الشخص ليس موجود",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration:const Duration(seconds: 2),
             ));
@@ -183,7 +183,7 @@ class AttendanceProvider extends ChangeNotifier{
     }catch(e){
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text("حدث خطا ما حاول مره اخري",style: Theme.of(context).textTheme.headline2,),
+            content: Text("حدث خطا ما حاول مره اخري",style: Theme.of(context).textTheme.displayMedium,),
             backgroundColor: Colors.white,
             duration:const Duration(seconds: 2),
           ));
@@ -210,7 +210,7 @@ class AttendanceProvider extends ChangeNotifier{
             case 0:
               ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text("الشخص دفع بالفعل ",style: Theme.of(context).textTheme.headline2,),
+                    content: Text("الشخص دفع بالفعل ",style: Theme.of(context).textTheme.displayMedium,),
                     backgroundColor: Colors.white,
                     duration:const Duration(seconds: 2),
                   ));
@@ -219,7 +219,7 @@ class AttendanceProvider extends ChangeNotifier{
               await DBHelper.updatePayed(int.parse(controller.text),0);
               ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text("تم الدفع",style: Theme.of(context).textTheme.headline2,),
+                    content: Text("تم الدفع",style: Theme.of(context).textTheme.displayMedium,),
                     backgroundColor: Colors.white,
                     duration:const Duration(seconds: 2),
                   ));
@@ -229,7 +229,7 @@ class AttendanceProvider extends ChangeNotifier{
         }else{
           ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text("الشخص غير موجود",style: Theme.of(context).textTheme.headline2,),
+                content: Text("الشخص غير موجود",style: Theme.of(context).textTheme.displayMedium,),
                 backgroundColor: Colors.white,
                 duration:const Duration(seconds: 2),
               ));
@@ -238,7 +238,7 @@ class AttendanceProvider extends ChangeNotifier{
       else if(controller.text.isEmpty){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("ادخل رقم الشخص",style: Theme.of(context).textTheme.headline2,),
+              content: Text("ادخل رقم الشخص",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration:const Duration(seconds: 2),
             ));
@@ -246,7 +246,7 @@ class AttendanceProvider extends ChangeNotifier{
       else if(await DBHelper.updatePayed(int.parse(controller.text),0) == 0){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("ادخل رقم الشخص صحيح",style: Theme.of(context).textTheme.headline2,),
+              content: Text("ادخل رقم الشخص صحيح",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration:const Duration(seconds: 2),
             ));
@@ -255,7 +255,7 @@ class AttendanceProvider extends ChangeNotifier{
     }catch(e){
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text("حدث خطا ما حاول مره اخري",style: Theme.of(context).textTheme.headline2,),
+            content: Text("حدث خطا ما حاول مره اخري",style: Theme.of(context).textTheme.displayMedium,),
             backgroundColor: Colors.white,
             duration:const Duration(seconds: 2),
           ));
@@ -283,7 +283,7 @@ class AttendanceProvider extends ChangeNotifier{
           controller.clear();
           ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text("تم تجديد الاشتراك ",style: Theme.of(context).textTheme.headline2,),
+                content: Text("تم تجديد الاشتراك ",style: Theme.of(context).textTheme.displayMedium,),
                 backgroundColor: Colors.white,
                 duration:const Duration(seconds: 2),
               ));
@@ -291,7 +291,7 @@ class AttendanceProvider extends ChangeNotifier{
         else{
           ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text("الشخص غير موجود",style: Theme.of(context).textTheme.headline2,),
+                content: Text("الشخص غير موجود",style: Theme.of(context).textTheme.displayMedium,),
                 backgroundColor: Colors.white,
                 duration:const Duration(seconds: 2),
               ));
@@ -300,7 +300,7 @@ class AttendanceProvider extends ChangeNotifier{
       else if(controller.text.isEmpty){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("ادخل رقم الشخص",style: Theme.of(context).textTheme.headline2,),
+              content: Text("ادخل رقم الشخص",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration: const Duration(seconds: 2),
             ));
@@ -308,7 +308,7 @@ class AttendanceProvider extends ChangeNotifier{
       else if(getDouble(controller) == -1){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("ادخل رقم الشخص صحيح",style: Theme.of(context).textTheme.headline2,),
+              content: Text("ادخل رقم الشخص صحيح",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration:const Duration(seconds: 2),
             ));
@@ -316,7 +316,7 @@ class AttendanceProvider extends ChangeNotifier{
       else if( getDouble(controller) >= await count()){
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("الشخص غير موجود",style: Theme.of(context).textTheme.headline2,),
+              content: Text("الشخص غير موجود",style: Theme.of(context).textTheme.displayMedium,),
               backgroundColor: Colors.white,
               duration:const Duration(seconds: 2),
             ));
@@ -325,7 +325,7 @@ class AttendanceProvider extends ChangeNotifier{
     }catch(e){
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text("حدث خطا ما حاول مره اخري",style: Theme.of(context).textTheme.headline2,),
+            content: Text("حدث خطا ما حاول مره اخري",style: Theme.of(context).textTheme.displayMedium,),
             backgroundColor: Colors.white,
             duration:const Duration(seconds: 2),
           ));

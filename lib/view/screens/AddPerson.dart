@@ -39,7 +39,7 @@ class AddPerson extends StatelessWidget {
             children: [
               Padding(
                 padding:  EdgeInsets.only(top: 15.h),
-                child: Text(id !=0? "تعديل بيانات الشخص":"اضافة شخص",style: Theme.of(context).textTheme.headline1!.copyWith(fontWeight:FontWeight.w500),),
+                child: Text(id !=0? "تعديل بيانات الشخص":"اضافة شخص",style: Theme.of(context).textTheme.displayLarge!.copyWith(fontWeight:FontWeight.w500),),
               ),
               Padding(
                 padding:  EdgeInsets.only(top: 15.h,right: 20.w),
@@ -95,7 +95,7 @@ class AddPerson extends StatelessWidget {
                                                   TextDirection.rtl,
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .headline2,
+                                                  .displayMedium,
                                             )))
                                         .toList(),
                                     onChanged: (String? x) => value.onTap(x),
@@ -134,7 +134,7 @@ class AddPerson extends StatelessWidget {
                                               textDirection: TextDirection.rtl,
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .headline2,
+                                                  .displayMedium,
                                             ),
                                           )))
                                       .toList(),
@@ -170,7 +170,7 @@ class AddPerson extends StatelessWidget {
                               width: 100.w,
                               child: Text(e.toString(),
                                 textDirection: TextDirection.rtl,
-                                style: Theme.of(context).textTheme.headline2,)))).toList(),
+                                style: Theme.of(context).textTheme.displayMedium,)))).toList(),
                       onChanged: (String? x)=>value.ontapp3(x),
                       icon:const Icon(Icons.keyboard_arrow_down),
                       iconSize: 40.r,

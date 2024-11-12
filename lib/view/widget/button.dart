@@ -23,7 +23,7 @@ class Button extends StatelessWidget {
           borderRadius:BorderRadius.circular(cir),
           color: color,
         ),
-        child: Text(text,style: Theme.of(context).textTheme.button,),
+        child: Text(text,style: Theme.of(context).textTheme.displaySmall,),
       ),
     );
   }

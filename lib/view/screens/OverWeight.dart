@@ -60,7 +60,7 @@ class OverWeight extends StatelessWidget {
                                 child: Text(e.name.toString(),
                                   overflow:TextOverflow.ellipsis,
                                   textAlign:TextAlign.end
-                                  ,style: Theme.of(context).textTheme.headline2,
+                                  ,style: Theme.of(context).textTheme.displayMedium,
                                 ),
                               ),
                               _buildCell2(context,e.date.toString(), 140),
@@ -79,7 +79,7 @@ class OverWeight extends StatelessWidget {
                                 alignment: Alignment.center,
                                 width: 170.w,
                                 height: 60.0.h,
-                                child: FittedBox(child: Text(ee,style: Theme.of(context).textTheme.headline2,
+                                child: FittedBox(child: Text(ee,style: Theme.of(context).textTheme.displayMedium,
                                 ),
                                 ),
                               ) ),
@@ -107,7 +107,7 @@ class OverWeight extends StatelessWidget {
       alignment: Alignment.center,
       width: wid.w,
       height: 60.0.h,
-      child: FittedBox(child: Text(txt,style: Theme.of(context).textTheme.headline2,
+      child: FittedBox(child: Text(txt,style: Theme.of(context).textTheme.displayMedium,
       ),
       ),
     );
@@ -122,7 +122,7 @@ class OverWeight extends StatelessWidget {
       alignment: Alignment.center,
       width: wid.w,
       height: 60.0.h,
-      child: FittedBox(child: Text(txt,style: Theme.of(context).textTheme.headline2,
+      child: FittedBox(child: Text(txt,style: Theme.of(context).textTheme.displayMedium,
       ),
       ),
     );

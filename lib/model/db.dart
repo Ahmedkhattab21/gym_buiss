@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:gym2/model/person.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-
+import 'package:path/path.dart';
 class DBHelper{
   static Database? _database;
   static const int _version=1;
   static const String _tabeName='persons';
   static const String _tablelName2='attendancePerson';
 
+
   static Future<void> initDb()async {
     if (_database != null) {
       debugPrint("is created");
     } else {
+      debugPrint("not created");
       try {
+
         sqfliteFfiInit();
         final databaseFactory = databaseFactoryFfi;
+        final dbPath = await databaseFactory.getDatabasesPath();
+        final path = join(dbPath, 'gym_management.db');
+
         _database = await databaseFactory.openDatabase(
-          inMemoryDatabasePath,
+          path,
           options: OpenDatabaseOptions(
             onCreate: (Database db, int version)async{
               await db.execute(

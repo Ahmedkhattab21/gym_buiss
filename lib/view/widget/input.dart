@@ -14,7 +14,7 @@ class Input extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text(txt,style: Theme.of(context).textTheme.headline2,),
+           Text(txt,style: Theme.of(context).textTheme.displayMedium,),
           Container(
             padding: EdgeInsets.only(top: 5.h,bottom: 5.h),
               margin:  EdgeInsets.only(left: 15.w,top: 5.h,right: 5.w),
@@ -28,11 +28,11 @@ class Input extends StatelessWidget {
                     child: TextFormField(
                       readOnly: widget !=null ? true:false,
                       cursorColor: Colors.black45,
-                      style: Theme.of(context).textTheme.headline1,
+                      style: Theme.of(context).textTheme.displayLarge,
                       controller: controller,
                       decoration: InputDecoration(
                         hintText: hintTxt,
-                        hintStyle: Theme.of(context).textTheme.headline2!.copyWith(color:Colors.grey ),
+                        hintStyle: Theme.of(context).textTheme.displayMedium!.copyWith(color:Colors.grey ),
                         fillColor:const  Color.fromRGBO(238, 238, 238, 1),
                         filled: true,
                         enabledBorder: UnderlineInputBorder(

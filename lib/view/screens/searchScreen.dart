@@ -84,7 +84,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: Form(
                       key: Provider.of<SearchProvider>(context, listen: false).globalKey,
                       child: TextFormField(
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                         controller: Provider.of<SearchProvider>(context, listen: false).controller,
                         cursorColor: Colors.black45,
                         decoration:  InputDecoration(
@@ -114,7 +114,7 @@ class _SearchScreenState extends State<SearchScreen> {
             Provider.of<SearchProvider>(context, listen: true).vvb == -1
                 ? Text(
                   "الشضص غير موجود",
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                 )
                 : (Provider.of<SearchProvider>(context, listen: false)
                                 .getDouble2(Provider.of<SearchProvider>(context, listen: false).controller.text) == -1 ||
@@ -122,7 +122,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     ? Center(
                         child: Text(
                         "ادخل رقم الشخص ",
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ))
                     : Row(
                         children: [
@@ -194,7 +194,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                 textAlign: TextAlign.end,
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .headline2,
+                                                    .displayMedium,
                                               ),
                                             ),
                                             _buildCell2(context,e.date.toString(), 140),
@@ -230,7 +230,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                           ee.toString(),
                                                           style: Theme.of(context)
                                                               .textTheme
-                                                              .headline2,
+                                                              .displayMedium,
                                                         ),
                                                       ),
                                                     )),
@@ -308,7 +308,7 @@ class _SearchScreenState extends State<SearchScreen> {
       child: FittedBox(
         child: Text(
           txt,
-          style: Theme.of(context).textTheme.headline2,
+          style: Theme.of(context).textTheme.displayMedium,
         ),
       ),
     );
@@ -326,7 +326,7 @@ class _SearchScreenState extends State<SearchScreen> {
       child: FittedBox(
         child: Text(
           txt,
-          style: Theme.of(context).textTheme.headline2,
+          style: Theme.of(context).textTheme.displayMedium,
         ),
       ),
     );
