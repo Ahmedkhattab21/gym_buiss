@@ -20,10 +20,11 @@ import 'model/db.dart';
 //0 >> payed
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await windowManager.ensureInitialized();
+
 
   if (Platform.isWindows || Platform.isMacOS) {
-   await WindowManager.instance.setMinimumSize(const Size(500, 400));
+    await windowManager.ensureInitialized();
+    await WindowManager.instance.setMinimumSize(const Size(500, 400));
     await WindowManager.instance.setMaximumSize(const Size(500, 650));
   }
   await DBHelper.initDb();
